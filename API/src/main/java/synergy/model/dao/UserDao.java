@@ -6,6 +6,7 @@ import synergy.model.dto.SearchCondition;
 import synergy.model.dto.User;
 
 public interface UserDao {
+	
 	int insert(User user);
 	
 	int delete(String id);

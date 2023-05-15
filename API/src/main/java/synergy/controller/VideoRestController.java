@@ -18,24 +18,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.ApiOperation;
 import synergy.model.dto.SearchCondition;
-import synergy.model.dto.User;
-import synergy.model.service.UserService;
+import synergy.model.dto.Video;
+import synergy.model.service.VideoService;
 
 @RestController
 @RequestMapping("/userapi")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET , RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
-public class UserRestController {
+public class VideoRestController {
 
 	@Autowired
-	UserService us;
+	VideoService vs;
 
-	@GetMapping("/user")
-	@ApiOperation(value = "등록된 모든 사용자 정보를 반환한다.", response = User.class)
+	@GetMapping("/video")
+	@ApiOperation(value = "등록된 모든 비디오 정보를 반환한다.", response = Video.class)
 	public ResponseEntity<?> selectAll() {
 		try {
-			List<User> users = us.selectAll();
-			if (users != null && users.size() > 0) {
-				return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+			List<Video> videos = vs.selectAll();
+			if (videos != null && videos.size() > 0) {
+				return new ResponseEntity<List<Video>>(videos, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 			}
@@ -44,13 +44,13 @@ public class UserRestController {
 		}
 	}
 
-	@GetMapping("/user/{id}")
-	@ApiOperation(value = "{id}에 해당하는 사용자 정보를 반환한다.", response = User.class)
+	@GetMapping("/video/{id}")
+	@ApiOperation(value = "{id}에 해당하는 비디오 정보를 반환한다.", response = Video.class)
 	public ResponseEntity<?> select(@PathVariable String id) {
 		try {
-			User user = us.searchById(id);
-			if (user != null) {
-				return new ResponseEntity<User>(user, HttpStatus.OK);
+			Video video = vs.searchById(id);
+			if (video != null) {
+				return new ResponseEntity<Video>(video, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 			}
@@ -59,13 +59,13 @@ public class UserRestController {
 		}
 	}
 
-	@GetMapping("/user/search")
-	@ApiOperation(value = "SearchCondition 에 부합하는 조건을 가진 사용자 목록을 반환한다.", response = User.class)
+	@GetMapping("/video/search")
+	@ApiOperation(value = "SearchCondition 에 부합하는 조건을 가진 비디오 목록을 반환한다.", response = Video.class)
 	public ResponseEntity<?> search(SearchCondition con) {
 		try {
-			List<User> users = us.searchByCondition(con);
-			if (users != null && users.size() > 0) {
-				return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+			List<Video> videos = vs.searchByCondition(con);
+			if (videos != null && videos.size() > 0) {
+				return new ResponseEntity<List<Video>>(videos, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 			}
@@ -74,13 +74,13 @@ public class UserRestController {
 		}
 	}
 
-//	@PostMapping("/user/search")
-//	@ApiOperation(value = "SearchCondition 에 부합하는 조건을 가진 사용자 목록을 반환한다.", response = User.class)
+//	@PostMapping("/video/search")
+//	@ApiOperation(value = "SearchCondition 에 부합하는 조건을 가진 사용자 목록을 반환한다.", response = Video.class)
 //	public ResponseEntity<?> search2(@RequestBody SearchCondition con) {
 //		try {
-//			List<User> users = us.searchByCondition(con);
+//			List<Video> users = vs.searchByCondition(con);
 //			if (users != null && users.size() > 0) {
-//				return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+//				return new ResponseEntity<List<Video>>(users, HttpStatus.OK);
 //			} else {
 //				return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 //			}
@@ -89,12 +89,12 @@ public class UserRestController {
 //		}
 //	}
 	
-	@PostMapping("/user")
-	@ApiOperation(value = "사용자 정보를 삽입한다.", response = Integer.class)
-	public ResponseEntity<?> insert(@RequestBody User user) {
+	@PostMapping("/video")
+	@ApiOperation(value = "비디오 정보를 삽입한다.", response = Integer.class)
+	public ResponseEntity<?> insert(@RequestBody Video video) {
 		try {
-			System.out.println(user);
-			int result = us.insert(user);
+			System.out.println(video);
+			int result = vs.insert(video);
 			return new ResponseEntity<Integer>(result, HttpStatus.CREATED);
 
 		} catch (Exception e) {
@@ -102,11 +102,11 @@ public class UserRestController {
 		}
 	}
 
-	@PutMapping("/user")
-	@ApiOperation(value = "사용자 정보를 수정한다.", response = Integer.class)
-	public ResponseEntity<?> update(@RequestBody User user) {
+	@PutMapping("/video")
+	@ApiOperation(value = "비디오 정보를 수정한다.", response = Integer.class)
+	public ResponseEntity<?> update(@RequestBody Video video) {
 		try {
-			int result = us.update(user);
+			int result = vs.update(video);
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 
 		} catch (Exception e) {
@@ -114,11 +114,11 @@ public class UserRestController {
 		}
 	}
 	
-	@DeleteMapping("/user/{id}")
-	@ApiOperation(value = "{id} 에 해당하는 사용자 정보를 삭제한다.", response = Integer.class)
+	@DeleteMapping("/video/{id}")
+	@ApiOperation(value = "{id} 에 해당하는 비디오 정보를 삭제한다.", response = Integer.class)
 	public ResponseEntity<?> delete(@PathVariable String id) {
 		try {
-			int result = us.delete(id);
+			int result = vs.delete(id);
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 
 		} catch (Exception e) {

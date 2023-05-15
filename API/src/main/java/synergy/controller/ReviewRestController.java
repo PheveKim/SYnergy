@@ -18,24 +18,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.ApiOperation;
 import synergy.model.dto.SearchCondition;
-import synergy.model.dto.User;
-import synergy.model.service.UserService;
+import synergy.model.dto.Review;
+import synergy.model.service.ReviewService;
 
 @RestController
 @RequestMapping("/userapi")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET , RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
-public class UserRestController {
+public class ReviewRestController {
 
 	@Autowired
-	UserService us;
+	ReviewService rs;
 
-	@GetMapping("/user")
-	@ApiOperation(value = "등록된 모든 사용자 정보를 반환한다.", response = User.class)
+	@GetMapping("/review")
+	@ApiOperation(value = "등록된 모든 사용자 정보를 반환한다.", response = Review.class)
 	public ResponseEntity<?> selectAll() {
 		try {
-			List<User> users = us.selectAll();
-			if (users != null && users.size() > 0) {
-				return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+			List<Review> reviews = rs.selectAll();
+			if (reviews != null && reviews.size() > 0) {
+				return new ResponseEntity<List<Review>>(reviews, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 			}
@@ -44,13 +44,13 @@ public class UserRestController {
 		}
 	}
 
-	@GetMapping("/user/{id}")
-	@ApiOperation(value = "{id}에 해당하는 사용자 정보를 반환한다.", response = User.class)
+	@GetMapping("/review/{id}")
+	@ApiOperation(value = "{id}에 해당하는 사용자 정보를 반환한다.", response = Review.class)
 	public ResponseEntity<?> select(@PathVariable String id) {
 		try {
-			User user = us.searchById(id);
-			if (user != null) {
-				return new ResponseEntity<User>(user, HttpStatus.OK);
+			Review review = rs.searchById(id);
+			if (review != null) {
+				return new ResponseEntity<Review>(review, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 			}
@@ -59,13 +59,13 @@ public class UserRestController {
 		}
 	}
 
-	@GetMapping("/user/search")
-	@ApiOperation(value = "SearchCondition 에 부합하는 조건을 가진 사용자 목록을 반환한다.", response = User.class)
+	@GetMapping("/review/search")
+	@ApiOperation(value = "SearchCondition 에 부합하는 조건을 가진 사용자 목록을 반환한다.", response = Review.class)
 	public ResponseEntity<?> search(SearchCondition con) {
 		try {
-			List<User> users = us.searchByCondition(con);
-			if (users != null && users.size() > 0) {
-				return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+			List<Review> reviews = rs.searchByCondition(con);
+			if (reviews != null && reviews.size() > 0) {
+				return new ResponseEntity<List<Review>>(reviews, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 			}
@@ -89,12 +89,12 @@ public class UserRestController {
 //		}
 //	}
 	
-	@PostMapping("/user")
+	@PostMapping("/review")
 	@ApiOperation(value = "사용자 정보를 삽입한다.", response = Integer.class)
-	public ResponseEntity<?> insert(@RequestBody User user) {
+	public ResponseEntity<?> insert(@RequestBody Review review) {
 		try {
-			System.out.println(user);
-			int result = us.insert(user);
+			System.out.println(review);
+			int result = rs.insert(review);
 			return new ResponseEntity<Integer>(result, HttpStatus.CREATED);
 
 		} catch (Exception e) {
@@ -102,11 +102,11 @@ public class UserRestController {
 		}
 	}
 
-	@PutMapping("/user")
+	@PutMapping("/review")
 	@ApiOperation(value = "사용자 정보를 수정한다.", response = Integer.class)
-	public ResponseEntity<?> update(@RequestBody User user) {
+	public ResponseEntity<?> update(@RequestBody Review review) {
 		try {
-			int result = us.update(user);
+			int result = rs.update(review);
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 
 		} catch (Exception e) {
@@ -114,11 +114,11 @@ public class UserRestController {
 		}
 	}
 	
-	@DeleteMapping("/user/{id}")
+	@DeleteMapping("/review/{id}")
 	@ApiOperation(value = "{id} 에 해당하는 사용자 정보를 삭제한다.", response = Integer.class)
 	public ResponseEntity<?> delete(@PathVariable String id) {
 		try {
-			int result = us.delete(id);
+			int result = rs.delete(id);
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 
 		} catch (Exception e) {

@@ -144,23 +144,23 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    searchName2: function ({ commit }, name) {
-      const API_URL = `http://localhost:9999/userapi/user/search`;
-      axios({
-        url: API_URL,
-        method: "POST",
-        data: {
-          key: "name",
-          word: name,
-        },
-      })
-        .then((res) => {
-          commit("SEARCH_NAME", res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
+    // searchName2: function ({ commit }, name) {
+    //   const API_URL = `http://localhost:9999/userapi/user/search`;
+    //   axios({
+    //     url: API_URL,
+    //     method: "POST",
+    //     data: {
+    //       key: "name",
+    //       word: name,
+    //     },
+    //   })
+    //     .then((res) => {
+    //       commit("SEARCH_NAME", res.data);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // },
     setLoginUser: function ({ commit }, user) {
       const API_URL = `http://localhost:9999/userapi/user/${user.id}`;
       axios({

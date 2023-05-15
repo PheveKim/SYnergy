@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     searchUser() {
-      this.$store.dispatch("searchName2", this.search);
+      this.$store.dispatch("searchName", this.search);
     },
   },
   computed: {
