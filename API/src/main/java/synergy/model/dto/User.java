@@ -1,4 +1,4 @@
-package com.ssafy.hw.model.dto;
+package synergy.model.dto;
 
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.ssafy.hw.controller;
+package synergy.controller;
 
 import java.util.List;
 
@@ -16,11 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ssafy.hw.model.dto.SearchCondition;
-import com.ssafy.hw.model.dto.User;
-import com.ssafy.hw.model.service.UserService;
-
 import io.swagger.annotations.ApiOperation;
+import synergy.model.dto.SearchCondition;
+import synergy.model.dto.User;
+import synergy.model.service.UserService;
 
 @RestController
 @RequestMapping("/userapi")

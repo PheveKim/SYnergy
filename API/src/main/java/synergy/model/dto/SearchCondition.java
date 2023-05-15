@@ -1,4 +1,4 @@
-package com.ssafy.hw.model.dto;
+package synergy.model.dto;
 
 public class SearchCondition {
 

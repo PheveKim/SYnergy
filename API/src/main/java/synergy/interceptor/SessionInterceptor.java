@@ -1,4 +1,4 @@
-package com.ssafy.hw.interceptor;
+package synergy.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

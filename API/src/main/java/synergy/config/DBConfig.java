@@ -1,9 +1,9 @@
-package com.ssafy.hw.config;
+package synergy.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan(basePackages = "com.ssafy.hw.model.dao")
+@MapperScan(basePackages = "synergy.model.dao")
 public class DBConfig {
 }

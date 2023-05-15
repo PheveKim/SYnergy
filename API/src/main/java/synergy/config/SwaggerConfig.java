@@ -1,4 +1,4 @@
-package com.ssafy.hw.config;
+package synergy.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,7 +31,7 @@ public class SwaggerConfig {
 		return new Docket(DocumentationType.SWAGGER_2) // Swagger 2.0 기반의 문서 작성
 				.apiInfo(apiInfo) // 문서에 대한 정보를 설정한다.
 				.select() // ApiSelectorBuilder를 반환하며 상세한 설정 처리
-				.apis(RequestHandlerSelectors.basePackage("com.ssafy.hw.controller"))// 대상으로하는 api 설정
+				.apis(RequestHandlerSelectors.basePackage("synergy.controller"))// 대상으로하는 api 설정
 				.paths(PathSelectors.ant("/userapi/**")) // controller에서 swagger를 지정할 대상 path 설정
 				.build(); // Docket 객체 생성
 	}
