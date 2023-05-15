@@ -6,9 +6,9 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @SpringBootApplication
 @EnableAspectJAutoProxy
-public class HwVueUserApiApplication{
+public class VueUserApiApplication{
 	public static void main(String[] args) {
-		SpringApplication.run(HwVueUserApiApplication.class, args);
+		SpringApplication.run(VueUserApiApplication.class, args);
 	}
 
 }

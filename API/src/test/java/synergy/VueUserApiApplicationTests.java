@@ -1,10 +1,10 @@
-package com.ssafy.hw;
+package synergy;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HwVueUserApiApplicationTests {
+class VueUserApiApplicationTests {
 
 	@Test
 	void contextLoads() {

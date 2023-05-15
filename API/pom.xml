@@ -9,10 +9,10 @@
 		<version>2.6.13</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ssafy</groupId>
+	<groupId>synergy</groupId>
 	<artifactId>user</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>HW_VUE_USER_API</name>
+	<name>SYNERGY_API</name>
 	<description>사용자관리 BootVersion</description>
 	<properties>
 		<java.version>1.8</java.version>
