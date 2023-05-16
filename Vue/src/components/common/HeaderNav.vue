@@ -3,11 +3,11 @@
     <nav class="header-nav container">
       <div>
         
-        <a href="/" class="logo" style="">
+        <router-link to="/" class="logo" style="">
           <img src="@/assets/SYnergy_logo.png" style="width:50px; height:50px; margin-bottom:10px; margin-right:5px;" >
           SYnergy
 
-        </a>
+        </router-link>
       </div>
       <div>
         <router-link to="/user">회원목록</router-link>
