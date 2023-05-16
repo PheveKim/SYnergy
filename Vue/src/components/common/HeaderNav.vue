@@ -13,7 +13,7 @@
         <router-link to="/user">회원목록</router-link>
         <router-link to="/video">운동영상</router-link>
         <router-link to="/review">운동리뷰</router-link>
-        <router-link :to="{ name: 'Regist' }">회원가입</router-link>
+        <router-link :to="{ name: 'UserRegist' }">회원가입</router-link>
         <a href="#" v-if="getUser" @click="logout">로그아웃</a>
         <router-link to="/login" v-else>로그인</router-link>
       </div>

@@ -40,7 +40,7 @@
             <tr v-for="(video, index) in searchVideos" :key="index">
               <td>{{ index + 1 }}</td>
               <td>
-                <router-link class="video-link" :to="`/${video.id}`">{{
+                <router-link class="video-link" :to="`/video/${video.id}`">{{
                   video.id
                 }}</router-link>
               </td>

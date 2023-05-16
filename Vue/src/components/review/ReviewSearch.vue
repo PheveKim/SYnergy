@@ -39,7 +39,7 @@
             <tr v-for="(review, index) in searchReviews" :key="index">
               <td>{{ index + 1 }}</td>
               <td>
-                <router-link class="review-link" :to="`/${review.id}`">{{
+                <router-link class="review-link" :to="`/review/${review.id}`">{{
                   review.id
                 }}</router-link>
               </td>
