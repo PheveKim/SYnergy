@@ -17,8 +17,8 @@
       <input type="email" id="email" v-model="email" class="view" /><br />
       <label for="age">나이</label>
       <input type="number" id="age" v-model="age" class="view" /><br />
-      <button class="btn" @click="regist">등록</button>
-      <button class="btn" @click="getInfoFromAPI">랜덤</button>
+      <button type="button" class="btn btn-warning btn-lg" @click="regist">등록</button>
+      <button type="button" class="btn btn-warning btn-lg" @click="getInfoFromAPI">랜덤</button>
     </fieldset>
   </div>
 </template>

@@ -16,7 +16,7 @@ export default {
   name: "Home",
   data() {
     return {
-      message: "사용자 정보 사이트에 오신것을 환영합니다.",
+      message: "Greetings",
     };
   },
   components: {

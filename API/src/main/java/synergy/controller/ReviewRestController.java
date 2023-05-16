@@ -30,7 +30,7 @@ public class ReviewRestController {
 	ReviewService rs;
 
 	@GetMapping("/review")
-	@ApiOperation(value = "등록된 모든 사용자 정보를 반환한다.", response = Review.class)
+	@ApiOperation(value = "등록된 모든 리뷰 정보를 반환한다.", response = Review.class)
 	public ResponseEntity<?> selectAll() {
 		try {
 			List<Review> reviews = rs.selectAll();
@@ -45,7 +45,7 @@ public class ReviewRestController {
 	}
 
 	@GetMapping("/review/{id}")
-	@ApiOperation(value = "{id}에 해당하는 사용자 정보를 반환한다.", response = Review.class)
+	@ApiOperation(value = "{id}에 해당하는 리뷰 정보를 반환한다.", response = Review.class)
 	public ResponseEntity<?> select(@PathVariable String id) {
 		try {
 			Review review = rs.searchById(id);
@@ -60,7 +60,7 @@ public class ReviewRestController {
 	}
 
 	@GetMapping("/review/search")
-	@ApiOperation(value = "SearchCondition 에 부합하는 조건을 가진 사용자 목록을 반환한다.", response = Review.class)
+	@ApiOperation(value = "SearchCondition 에 부합하는 조건을 가진 리뷰 목록을 반환한다.", response = Review.class)
 	public ResponseEntity<?> search(SearchCondition con) {
 		try {
 			List<Review> reviews = rs.searchByCondition(con);
@@ -90,7 +90,7 @@ public class ReviewRestController {
 //	}
 	
 	@PostMapping("/review")
-	@ApiOperation(value = "사용자 정보를 삽입한다.", response = Integer.class)
+	@ApiOperation(value = "리뷰 정보를 삽입한다.", response = Integer.class)
 	public ResponseEntity<?> insert(@RequestBody Review review) {
 		try {
 			System.out.println(review);
@@ -103,7 +103,7 @@ public class ReviewRestController {
 	}
 
 	@PutMapping("/review")
-	@ApiOperation(value = "사용자 정보를 수정한다.", response = Integer.class)
+	@ApiOperation(value = "리뷰 정보를 수정한다.", response = Integer.class)
 	public ResponseEntity<?> update(@RequestBody Review review) {
 		try {
 			int result = rs.update(review);
@@ -115,7 +115,7 @@ public class ReviewRestController {
 	}
 	
 	@DeleteMapping("/review/{id}")
-	@ApiOperation(value = "{id} 에 해당하는 사용자 정보를 삭제한다.", response = Integer.class)
+	@ApiOperation(value = "{id} 에 해당하는 리뷰 정보를 삭제한다.", response = Integer.class)
 	public ResponseEntity<?> delete(@PathVariable String id) {
 		try {
 			int result = rs.delete(id);

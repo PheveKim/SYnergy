@@ -1,14 +1,21 @@
 <template>
-  <header>
-    <nav class="header-nav">
+  <header style="margin-bottom:30px;">
+    <nav class="header-nav container">
       <div>
-        <router-link to="/" class="logo">SSAFY USERS</router-link>
+        <img src="@/assets/SYnergy_logo.png" style="width:50px; height:50px; margin-bottom:10px; margin-right:5px;">
+        <a href="/" class="logo">
+          
+          SYnergy
+
+        </a>
       </div>
       <div>
+        <router-link to="/user">회원목록</router-link>
+        <router-link to="/video">운동영상</router-link>
+        <router-link to="/review">운동리뷰</router-link>
+        <router-link :to="{ name: 'Regist' }">회원가입</router-link>
         <a href="#" v-if="getUser" @click="logout">로그아웃</a>
         <router-link to="/login" v-else>로그인</router-link>
-        <router-link :to="{ name: 'Regist' }">회원가입</router-link>
-        <router-link to="/user">사용자목록</router-link>
       </div>
     </nav>
   </header>
@@ -36,8 +43,8 @@ export default {
 </script>
 <style>
 header {
-  height: 70px;
-  background-color: #53e3a6;
+  height: 75px;
+  background-color:#444444;
   line-height: 70px;
   padding: 0px 30px;
 }

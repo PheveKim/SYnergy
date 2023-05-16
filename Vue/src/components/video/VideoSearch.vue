@@ -6,9 +6,9 @@
         type="text"
         v-model="search"
         placeholder="이름을 입력하세요."
-        v-on:keyup.enter="searchUser"
+        v-on:keyup.enter="searchVideo"
       />
-      <button type="button" class="btn btn-warning btn-lg" v-on:click="searchUser">검색</button>
+      <button type="button" class="btn btn-warning btn-lg" v-on:click="searchVideo">검색</button>
     </div>
 
 
@@ -18,8 +18,8 @@
     <hr />
     <div>
       <h2>검색 결과</h2>
-      <div v-if="searchUserCnt">
-        <table class="user-list">
+      <div v-if="searchVideoCnt">
+        <table class="video-list">
           <colgroup>
             <col style="width: 5%" />
             <col style="width: 40%" />
@@ -30,23 +30,23 @@
           <thead>
             <tr>
               <th>번호</th>
-              <th>아이디</th>
-              <th>이름</th>
-              <th>이메일</th>
-              <th>나이</th>
+              <th>운동영상 아이디</th>
+              <th>제목</th>
+              <th>내용</th>
+              <th>url</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(user, index) in searchUsers" :key="index">
+            <tr v-for="(video, index) in searchVideos" :key="index">
               <td>{{ index + 1 }}</td>
               <td>
-                <router-link class="user-link" :to="`/${user.id}`">{{
-                  user.id
+                <router-link class="video-link" :to="`/${video.id}`">{{
+                  video.id
                 }}</router-link>
               </td>
-              <td>{{ user.name }}</td>
-              <td>{{ user.email }}</td>
-              <td>{{ user.age }} 세</td>
+              <td>{{ video.title }}</td>
+              <td>{{ video.content }}</td>
+              <td>{{ video.url }}</td>
             </tr>
           </tbody>
         </table>
@@ -60,20 +60,20 @@
 // import { mapState, ___________, mapGetters } from "vuex";
 import { mapState, mapGetters } from "vuex";
 export default {
-  name: "UserSearch",
+  name: "VideoSearch",
   data() {
     return {
       search: "",
     };
   },
   methods: {
-    searchUser() {
-      this.$store.dispatch("searchName", this.search);
+    searchVideo() {
+      this.$store.dispatch("searchVideo", this.search);
     },
   },
   computed: {
-    ...mapState(["searchUsers"]),
-    ...mapGetters(["searchUserCnt"]),
+    ...mapState(["searchVideos"]),
+    ...mapGetters(["searchVideoCnt"]),
   },
 };
 </script>

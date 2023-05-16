@@ -12,6 +12,12 @@ export default new Vuex.Store({
     user: {},
     loginUser: null,
     randomUser: null,
+    videos: [],
+    searchVideos: [],
+    video: {},
+    reviews: [],
+    searchReviews: [],
+    review: {},
   },
   getters: {
     userCnt: function (state) {
@@ -19,6 +25,18 @@ export default new Vuex.Store({
     },
     searchUserCnt: function (state) {
       return state.searchUsers.length > 0 ? state.searchUsers.length : null;
+    },
+    videoCnt: function (state) {
+      return state.videos.length;
+    },
+    searchVideoCnt: function (state) {
+      return state.searchVideos.length > 0 ? state.searchVideos.length : null;
+    },
+    reviewCnt: function (state) {
+      return state.reviews.length;
+    },
+    searchReviewCnt: function (state) {
+      return state.searchReviews.length > 0 ? state.searchReviews.length : null;
     },
   },
   mutations: {
@@ -42,6 +60,30 @@ export default new Vuex.Store({
     },
     SET_RANDOM_USER: function (state, user) {
       state.randomUser = user;
+    },
+    CREATE_VIDEO: function (state, video) {
+      state.videos.push(video);
+    },
+    SET_VIDEOS: function (state, videos) {
+      state.videos = videos;
+    },
+    SET_VIDEO: function (state, video) {
+      state.video = video;
+    },
+    SEARCH_VIDEO_TITLE: function (state, videos) {
+      state.searchVideos = videos;
+    },
+    CREATE_REVIEW: function (state, review) {
+      state.reviews.push(review);
+    },
+    SET_REVIEWS: function (state, reviews) {
+      state.reviews = reviews;
+    },
+    SET_REVIEW: function (state, review) {
+      state.review = review;
+    },
+    SEARCH_REVIEW_TITLE: function (state, reviews) {
+      state.searchReviews = reviews;
     },
   },
   actions: {
@@ -197,6 +239,206 @@ export default new Vuex.Store({
       } catch (err) {
         console.log(err);
       }
+    },
+
+    createVideo: function ({ commit }, video) {
+      console.log(video)
+      const API_URL = `http://localhost:9999/userapi/video`;
+      axios({
+        url: API_URL,
+        method: "POST",
+        data: video,
+      })
+        .then(() => {
+          commit("CREATE_VIDEO", video);
+          alert("등록되었습니다.");
+          router.push("/video");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    setVideos: function ({ commit }) {
+      const API_URL = `http://localhost:9999/userapi/video`;
+      return axios({
+        url: API_URL,
+        method: "GET",
+      })
+        .then((res) => {
+          console.log("video setting...");
+          console.log(res.data);
+          commit("SET_VIDEOS", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    updateVideo: function ({commit}, video) {
+      console.log(commit);
+      const API_URL = `http://localhost:9999/userapi/video`;
+      axios({
+        url: API_URL,
+        method: "PUT",
+        data: video,
+      })
+        .then(() => {
+          alert("수정 완료!");
+          router.push("/video");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    deleteVideo: function ({ state }, id) {
+      const API_URL = `http://localhost:9999/userapi/video/${id}`;
+      axios({
+        url: API_URL,
+        method: "DELETE",
+      })
+        .then(() => {
+          alert("삭제 완료!");
+          let index;
+          for (let i = 0; i < state.videos.length; i++) {
+            if (state.videos[i].id === id) {
+              index = i;
+            }
+          }
+          state.videos.splice(index, 1);
+          router.push("/video");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    setVideo: function ({ commit }, id) {
+      const API_URL = `http://localhost:9999/userapi/video/${id}`;
+      axios({
+        url: API_URL,
+        method: "GET",
+      })
+        .then((res) => {
+          commit("SET_VIDEO", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    searchVideoTitle: function ({ commit }, title) {
+      const API_URL = `http://localhost:9999/userapi/video/search`;
+      axios({
+        url: API_URL,
+        method: "GET",
+        params: {
+          key: "title",
+          word: title,
+        },
+      })
+        .then((res) => {
+          commit("SEARCH_VIDEO_TITLE", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    createReview: function ({ commit }, review) {
+      console.log(review)
+      const API_URL = `http://localhost:9999/userapi/review`;
+      axios({
+        url: API_URL,
+        method: "POST",
+        data: review,
+      })
+        .then(() => {
+          commit("CREATE_REVIEW", review);
+          alert("등록되었습니다.");
+          router.push("/review");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    setReviews: function ({ commit }) {
+      const API_URL = `http://localhost:9999/userapi/review`;
+      return axios({
+        url: API_URL,
+        method: "GET",
+      })
+        .then((res) => {
+          console.log("review setting...");
+          console.log(res.data);
+          commit("SET_REVIEWS", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    updateReview: function ({commit}, review) {
+      console.log(commit);
+      const API_URL = `http://localhost:9999/userapi/review`;
+      axios({
+        url: API_URL,
+        method: "PUT",
+        data: review,
+      })
+        .then(() => {
+          alert("수정 완료!");
+          router.push("/review");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    deleteReview: function ({ state }, id) {
+      const API_URL = `http://localhost:9999/userapi/review/${id}`;
+      axios({
+        url: API_URL,
+        method: "DELETE",
+      })
+        .then(() => {
+          alert("삭제 완료!");
+          let index;
+          for (let i = 0; i < state.reviews.length; i++) {
+            if (state.reviews[i].id === id) {
+              index = i;
+            }
+          }
+          state.reviews.splice(index, 1);
+          router.push("/review");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    setReview: function ({ commit }, id) {
+      const API_URL = `http://localhost:9999/userapi/review/${id}`;
+      axios({
+        url: API_URL,
+        method: "GET",
+      })
+        .then((res) => {
+          commit("SET_REVIEW", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    searchReviewTitle: function ({ commit }, title) {
+      const API_URL = `http://localhost:9999/userapi/review/search`;
+      axios({
+        url: API_URL,
+        method: "GET",
+        params: {
+          key: "title",
+          word: title,
+        },
+      })
+        .then((res) => {
+          commit("SEARCH_REVIEW_TITLE", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
   modules: {},

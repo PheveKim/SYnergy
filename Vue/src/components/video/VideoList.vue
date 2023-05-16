@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <h2>회원 목록</h2>
-    <h4>등록된 회원 수 : {{ userCnt }}</h4>
-    <div v-if="userCnt">
-      <table class="user-list">
+    <h2>운동 영상</h2>
+    <h4>등록된 영상 수 : {{ videoCnt }}</h4>
+    <div v-if="videoCnt">
+      <table class="video-list">
         <colgroup>
           <col style="width: 5%" />
           <col style="width: 40%" />
@@ -15,40 +15,40 @@
           <tr>
             <th>번호</th>
             <th>아이디</th>
-            <th>이름</th>
-            <th>이메일</th>
-            <th>나이</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>url</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(user, index) in users" :key="index">
+          <tr v-for="(video, index) in videos" :key="index">
             <td>{{ index + 1 }}</td>
             <td>
-              <router-link class="user-link" :to="`/user/${user.id}`">{{
-                user.id
+              <router-link class="video-link" :to="`/video/${video.id}`">{{
+                video.id
               }}</router-link>
             </td>
-            <td>{{ user.name }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.age }} 세</td>
+            <td>{{ video.title }}</td>
+            <td>{{ video.content }}</td>
+            <td>{{ video.url }}</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div v-else>등록된 회원이 없습니다.</div>
+    <div v-else>등록된 영상이 없습니다.</div>
   </div>
 </template>
 <script>
 import { mapState, mapGetters } from "vuex";
 export default {
-  name: "UserList",
+  name: "VideoList",
   methods: {},
   computed: {
-    ...mapState(["users"]),
-    ...mapGetters(["userCnt"]),
+    ...mapState(["videos"]),
+    ...mapGetters(["videoCnt"]),
   },
   created() {
-   this.$store.dispatch("setUsers");
+   this.$store.dispatch("setVideos");
   },
 };
 </script>

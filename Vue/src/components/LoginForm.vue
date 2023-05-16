@@ -11,7 +11,7 @@
         v-model="password"
         class="view"
       /><br />
-      <button class="btn" @click="login">로그인</button>
+      <button type="button" class="btn btn-warning btn-lg" @click="login">로그인</button>
     </fieldset>
   </div>
 </template>
