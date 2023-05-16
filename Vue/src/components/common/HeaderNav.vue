@@ -2,9 +2,9 @@
   <header style="margin-bottom:30px;">
     <nav class="header-nav container">
       <div>
-        <img src="@/assets/SYnergy_logo.png" style="width:50px; height:50px; margin-bottom:10px; margin-right:5px;">
-        <a href="/" class="logo">
-          
+        
+        <a href="/" class="logo" style="">
+          <img src="@/assets/SYnergy_logo.png" style="width:50px; height:50px; margin-bottom:10px; margin-right:5px;" >
           SYnergy
 
         </a>
@@ -47,6 +47,11 @@ header {
   background-color:#444444;
   line-height: 70px;
   padding: 0px 30px;
+}
+
+header a:hover{
+  background-color:transparent;
+  color:grey;
 }
 
 header a {

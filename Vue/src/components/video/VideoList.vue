@@ -1,14 +1,42 @@
 <template>
   <div class="container">
-    <h2>운동 영상</h2>
-    <h4>등록된 영상 수 : {{ videoCnt }}</h4>
+    <!-- <h2>운동 영상</h2> -->
+    <!-- <h4>등록된 영상 수 : {{ videoCnt }}</h4> -->
+    <font style="font-weight:bold; font-size:30px;">운동 영상 목록 ({{ videoCnt }})</font>
     <div v-if="videoCnt">
-      <table class="video-list">
+
+      <div class="row">
+        <div class="col" v-for="(video, index) in videos" :key="index">
+          <!-- <div>{{ index + 1 }}</div> -->
+          <!-- <div>
+            <router-link class="video-link" :to="`/video/${video.id}`">{{
+              video.id
+            }}</router-link>
+          </div> -->
+          
+          <div style="border-radius:100px; margin-top:20px; margin-bottom:5px;">
+            <iframe
+              style="border-radius:15px;"
+              width="400" 
+              height="250" :src="`https://www.youtube.com/embed/${ video.youtubeurl }`"
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          <router-link class="video-link" :to="`/video/${video.id}`" style="text-decoration-line: none;">
+            <div><font style="font-weight:bold; font-size:25px; ">{{ video.title.substring(0,20) }}</font></div>
+            <div><font style="font-weight:; font-size:15px; color:black;">{{ video.content.substring(0, 30) }}</font></div>
+          </router-link>
+        </div>
+      </div>
+
+      <!-- <table class="video-list">
         <colgroup>
           <col style="width: 5%" />
+          <col style="width: 5%" />
+          <col style="width: 35%" />
           <col style="width: 40%" />
-          <col style="width: 20%" />
-          <col style="width: 20%" />
           <col style="width: 15%" />
         </colgroup>
         <thead>
@@ -17,7 +45,7 @@
             <th>아이디</th>
             <th>제목</th>
             <th>내용</th>
-            <th>url</th>
+            <th>youtubeurl</th>
           </tr>
         </thead>
         <tbody>
@@ -30,10 +58,18 @@
             </td>
             <td>{{ video.title }}</td>
             <td>{{ video.content }}</td>
-            <td>{{ video.url }}</td>
+            <td>
+              <iframe
+                width="560" 
+                height="315" :src="`https://www.youtube.com/embed/${ video.youtubeurl }`"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+              </iframe>
+            </td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
     </div>
     <div v-else>등록된 영상이 없습니다.</div>
   </div>

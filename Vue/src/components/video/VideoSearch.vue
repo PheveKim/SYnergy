@@ -57,7 +57,6 @@
   </div>
 </template>
 <script>
-// import { mapState, ___________, mapGetters } from "vuex";
 import { mapState, mapGetters } from "vuex";
 export default {
   name: "VideoSearch",
