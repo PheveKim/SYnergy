@@ -24,7 +24,7 @@
           <tr v-for="(user, index) in users" :key="index">
             <td>{{ index + 1 }}</td>
             <td>
-              <router-link class="user-link" :to="`/user/${user.id}`">{{
+              <router-link class="user-link" :to="`/user/${user.id}`" style="text-decoration-line: none;">{{
                 user.id
               }}</router-link>
             </td>

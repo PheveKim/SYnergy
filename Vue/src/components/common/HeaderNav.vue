@@ -3,13 +3,13 @@
     <nav class="header-nav container">
       <div>
         
-        <router-link to="/" class="logo" style="">
-          <img src="@/assets/SYnergy_logo.png" style="width:50px; height:50px; margin-bottom:10px; margin-right:5px;" >
-          SYnergy
-
+        <router-link to="/" class="logo" style="margin-top:5px;">
+          <img src="@/assets/logo2.png" style="width:70px; height:70px; margin-top:5px; margin-bottom:10px; margin-right:20px;" >
+          <img src="@/assets/logo_word.png" style="width:140px; height:40px; margin-top:5px; margin-bottom:10px; margin-right:10px;" >
+          <!-- SYnergy -->
         </router-link>
       </div>
-      <div>
+      <div style="margin-top:10px;">
         <router-link to="/user">회원목록</router-link>
         <router-link to="/video">운동영상</router-link>
         <router-link to="/review">운동리뷰</router-link>
@@ -43,8 +43,8 @@ export default {
 </script>
 <style>
 header {
-  height: 75px;
-  background-color:#444444;
+  height: 90px;
+  background-color: black;
   line-height: 70px;
   padding: 0px 30px;
 }
