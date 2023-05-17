@@ -2,7 +2,6 @@
   <header style="margin-bottom:30px;">
     <nav class="header-nav container">
       <div>
-        
         <router-link  to="/" class="logo" style="margin-top:5px;">
           <img src="@/assets/logo2.png" style="width:70px; height:70px; margin-top:5px; margin-bottom:10px; margin-right:20px;" >
           <img src="@/assets/logo_word.png" style="width:140px; height:40px; margin-top:5px; margin-bottom:10px; margin-right:10px;" >
