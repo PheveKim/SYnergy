@@ -11,6 +11,12 @@ export default {
   components: {
     HeaderNav,
   },
+  watch: {
+    $route() {
+      // console.log("to:", to, "from:", from);
+      this.$store.commit("RESET_STATE");
+    }
+}
 };
 </script>
 <style>

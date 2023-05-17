@@ -12,7 +12,7 @@
         class="view"
         v-on:keyup.enter="login"
       /><br />
-      <button type="button" class="btn btn-warning btn-lg" @click="login">로그인</button>
+      <button type="button" class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" @click="login">로그인</button>
     </fieldset>
   </div>
 </template>

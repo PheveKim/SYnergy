@@ -85,6 +85,11 @@ export default new Vuex.Store({
     SEARCH_REVIEW_TITLE: function (state, reviews) {
       state.searchReviews = reviews;
     },
+    RESET_STATE: function (state) {
+      state.searchUsers = [];
+      state.searchVideos = [];
+      state.searchReviews = [];
+    },
   },
   actions: {
     createUser: function ({ commit }, user) {

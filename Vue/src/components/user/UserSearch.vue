@@ -8,7 +8,7 @@
         placeholder="이름을 입력하세요."
         v-on:keyup.enter="searchUser"
       />
-      <button type="button" class="btn btn-warning btn-lg" v-on:click="searchUser">검색</button>
+      <button type="button" class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" v-on:click="searchUser">검색</button>
     </div>
 
 
@@ -17,8 +17,8 @@
     <br />
     <hr />
     <div>
-      <h2>검색 결과</h2>
       <div v-if="searchUserCnt">
+      <h2>검색 결과</h2>
         <table class="user-list">
           <colgroup>
             <col style="width: 5%" />
@@ -51,7 +51,10 @@
           </tbody>
         </table>
       </div>
-      <div v-else>검색 결과가 없습니다.</div>
+      <div v-else-if="this.fl">
+        <h2>검색 결과</h2>
+        검색 결과가 없습니다.
+      </div>
     </div>
     <br />
   </div>
@@ -64,11 +67,13 @@ export default {
   data() {
     return {
       search: "",
+      fl:false,
     };
   },
   methods: {
     searchUser() {
       this.$store.dispatch("searchName", this.search);
+      this.fl=true;
     },
   },
   computed: {

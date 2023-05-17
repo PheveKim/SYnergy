@@ -3,7 +3,7 @@
     <nav class="header-nav container">
       <div>
         
-        <router-link to="/" class="logo" style="margin-top:5px;">
+        <router-link  to="/" class="logo" style="margin-top:5px;">
           <img src="@/assets/logo2.png" style="width:70px; height:70px; margin-top:5px; margin-bottom:10px; margin-right:20px;" >
           <img src="@/assets/logo_word.png" style="width:140px; height:40px; margin-top:5px; margin-bottom:10px; margin-right:10px;" >
           <!-- SYnergy -->
@@ -11,7 +11,7 @@
       </div>
       <div style="margin-top:10px;">
         <router-link to="/user">회원목록</router-link>
-        <router-link to="/video">운동영상</router-link>
+        <!-- <router-link to="/video">운동영상</router-link> -->
         <router-link to="/review">운동리뷰</router-link>
         <router-link :to="{ name: 'UserRegist' }">회원가입</router-link>
         <a href="#" v-if="getUser" @click="logout">로그아웃</a>
@@ -28,6 +28,9 @@ export default {
     logout() {
       this.$store.commit("LOGOUT");
     },
+    reset_state() {
+      this.$store.commit("RESET_STATE");
+    }
   },
   computed: {
     ...mapState(["loginUser"]),

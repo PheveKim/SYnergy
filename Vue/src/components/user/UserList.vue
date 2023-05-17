@@ -33,13 +33,16 @@
             <td>{{ user.age }} 세</td>
           </tr>
         </tbody>
-      </table>
+      </table>  
     </div>
     <div v-else>등록된 회원이 없습니다.</div>
+    <user-search style="margin-top:100px;"></user-search>
   </div>
+  
 </template>
 <script>
 import { mapState, mapGetters } from "vuex";
+import UserSearch from "@/components/user/UserSearch.vue";
 export default {
   name: "UserList",
   methods: {},
@@ -49,6 +52,10 @@ export default {
   },
   created() {
    this.$store.dispatch("setUsers");
+   
   },
+  components: {
+    UserSearch,
+  }
 };
 </script>

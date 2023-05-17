@@ -23,8 +23,8 @@
       <input type="email" id="email" v-model="user.email" class="view" /><br />
       <label for="age">나이</label>
       <input type="number" id="age" v-model="user.age" class="view" /><br />
-      <button class="btn" @click="updateUser">수정</button>
-      <button class="btn" @click="deleteUser">삭제</button>
+      <button class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" @click="updateUser">수정</button>
+      <button class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" @click="deleteUser">삭제</button>
     </fieldset>
   </div>
 </template>

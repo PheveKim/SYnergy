@@ -4,23 +4,24 @@
     <div class="text-center">
       <h1>{{ message }}</h1>
     </div>
-    <br />
-    <user-search></user-search>
+    <video-list></video-list>
   </div>
 </template>
 
 <script>
-import UserSearch from "@/components/user/UserSearch.vue";
+// import UserSearch from "@/components/user/UserSearch.vue";
+import VideoList from "@/components/video/VideoList.vue";
 
 export default {
   name: "Home",
   data() {
     return {
-      message: "Greetings",
+      // message: "Greetings",
     };
   },
   components: {
-    UserSearch,
+    // UserSearch,
+    VideoList,
   },
 };
 </script>
