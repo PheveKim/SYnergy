@@ -69,8 +69,14 @@ export default {
   },
   methods: {
     searchVideo() {
-      this.$store.dispatch("searchVideoTitle", this.search);
-      this.fl = true;
+      if(this.search===""){
+        alert("제목을 입력해주세요.");
+        return;
+      }
+      else{
+        this.$store.dispatch("searchVideoTitle", this.search);
+        this.fl=true;
+      }
     },
   },
   computed: {

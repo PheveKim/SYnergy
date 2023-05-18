@@ -19,6 +19,7 @@
 
 
   <section class="gradient-form" style="background-color: #eee;">
+  <br>
   <div class="container py-5" style="height:auto;">
     <div class="row d-flex justify-content-center align-items-center">
       <div class="" style="width:66%;">
@@ -32,18 +33,16 @@
                 </div>
                 <br>
 
-                <form style="text-align: center;">
+                <form style="text-align: center; margin-top:10px;">
                   <p style="text-align: center;">계정 정보를 입력하세요</p>
                   <br>
 
                   <div class="form-outline mb-4">
-                    <label class="form-label" for="form2Example11">아이디 :</label>
-                    <input type="text" id="id" v-model="id" class="view" v-on:keyup.enter="login" />
-                    
+                    <input placeholder="아이디" type="text" id="id" v-model="id" class="view" v-on:keyup.enter="login" />
                   </div>
                   <div class="form-outline mb-4">
-                    <label class="form-label" for="form2Example22">비밀번호 :</label>
                     <input
+                      placeholder="비밀번호"
                       type="password"
                       id="password"
                       v-model="password"
@@ -52,7 +51,7 @@
                   </div>
 
                   <div class="text-center" style="margin-bottom:15px;">
-                    <button class="btn btn-primary btn-block fa-lg gradient-custom-2 btn-lg" style="width:100px;" type="button" @click="login">로그인</button>
+                    <button class="btn btn-primary btn-block fa-lg gradient-custom-2 btn-lg" style="width:150px;" type="button" @click="login">로그인</button>
                   </div>
 
                   <div class="d-flex align-items-center justify-content-center" style="margin-bottom:15px;">
@@ -62,20 +61,12 @@
                   <router-link :to="{ name: 'UserRegist' }" ><button type="button" class="btn btn-outline-danger btn-lg" style="width:150px;">회원 가입</button></router-link>
                 </div>
                 </form>
-
-            <!-- <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
-              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                <h4 class="mb-4">We are more than just a company</h4>
-                <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              </div>
-            </div> -->
           </div>
         </div>
       </div>
     </div>
   </div>
+  <br>
 </section>
 </div>
 </template>

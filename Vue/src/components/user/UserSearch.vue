@@ -7,7 +7,9 @@
         v-model="search"
         placeholder="이름을 입력하세요."
         v-on:keyup.enter="searchUser"
+
       />
+      
       <button type="button" class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" v-on:click="searchUser">검색</button>
     </div>
 
@@ -23,7 +25,7 @@
           <colgroup>
             <col style="width: 5%" />
             <col style="width: 40%" />
-            <col style="width: 20%" />
+            <col style="width: 20%" />  
             <col style="width: 20%" />
             <col style="width: 15%" />
           </colgroup>
@@ -60,7 +62,6 @@
   </div>
 </template>
 <script>
-// import { mapState, ___________, mapGetters } from "vuex";
 import { mapState, mapGetters } from "vuex";
 export default {
   name: "UserSearch",
@@ -72,8 +73,14 @@ export default {
   },
   methods: {
     searchUser() {
-      this.$store.dispatch("searchName", this.search);
-      this.fl=true;
+      if(this.search===""){
+        alert("이름을 입력해주세요.");
+        return;
+      }
+      else{
+        this.$store.dispatch("searchName", this.search);
+        this.fl=true;
+      }
     },
   },
   computed: {
