@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="text-center">
-      <div class="input-group rounded" style="height:50px;">
+      <div class="input-group rounded">
         <input 
           type="text" 
           class="form-control" 
@@ -9,7 +9,7 @@
           aria-label="Search"
           v-model="search" 
           aria-describedby="search-addon" 
-          v-on:keyup.enter="searchVideo" />
+          v-on:keyup.enter="searchVideo"/>
         <button class="input-group-text border-0" id="search-addon" v-on:click="searchVideo" >
           검색
         </button>

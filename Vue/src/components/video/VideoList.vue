@@ -14,7 +14,21 @@
           </button>
         </router-link>  
       </div>
-      
+      <!-- Example single danger button -->
+      <div class="btn-group">
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          운동 부위 고르기
+        </button>
+        <div class="dropdown-menu ">
+          <a class="dropdown-item" href="#">등</a>
+          <a class="dropdown-item" href="#">가슴</a>
+          <a class="dropdown-item" href="#">하체</a>
+          <a class="dropdown-item" href="#">어깨</a>
+          <a class="dropdown-item" href="#">복근</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">기타</a>
+        </div>
+      </div>
     </div>
     <div v-if="videoCnt">
 
