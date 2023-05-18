@@ -5,7 +5,7 @@
         <input 
           type="text" 
           class="form-control" 
-          placeholder="제목을 검색하세요" 
+          placeholder="제목을 검색하세요." 
           aria-label="Search"
           v-model="search" 
           aria-describedby="search-addon" 
@@ -15,9 +15,6 @@
         </button>
       </div>
     </div>
-
-
-   
 
     <br />
     <div>

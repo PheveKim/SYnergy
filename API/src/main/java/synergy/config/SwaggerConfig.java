@@ -23,8 +23,8 @@ public class SwaggerConfig {
 	 */
 	@Bean
 	public Docket api() {
-		final ApiInfo apiInfo = new ApiInfoBuilder().title("SSAFY 사용자관리 API")
-				.description("<h3>과제에서 사용되는 RestApi에 대한 문서를 제공한다.</h3>")
+		final ApiInfo apiInfo = new ApiInfoBuilder().title("SYnergy API")
+				.description("<h3>SYnergy RestApi에 대한 문서를 제공한다.</h3>")
 				.contact(new Contact("SSAFY", "https://edu.ssafy.com", "ssafy@ssafy.com")).license("MIT License")
 				.version("1.0").build();
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="loginUser.id === `${user.id}`">
     <h2>회원 정보</h2>
     <fieldset class="text-center">
       <label for="id">아이디</label>
@@ -27,6 +27,8 @@
       <button class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" @click="deleteUser">삭제</button>
     </fieldset>
   </div>
+  
+  
 </template>
 <script>
 import { mapState } from "vuex";
@@ -42,9 +44,11 @@ export default {
     async setUser(id) {
      await this.$store.dispatch("setUser", id);
     },
+    
   },
   computed: {
     ...mapState(["user"]),
+    ...mapState(["loginUser"]),
   },
   created() {
     const pathName = new URL(document.location).pathname.split("/");

@@ -5,25 +5,14 @@
         <router-link  to="/" class="logo" style="margin-top:5px;">
           <img src="@/assets/logo2.png" style="width:70px; height:70px; margin-top:5px; margin-bottom:10px; margin-right:20px;" >
           <img src="@/assets/logo_word.png" style="width:140px; height:40px; margin-top:5px; margin-bottom:10px; margin-right:10px;" >
-          <!-- SYnergy -->
         </router-link>
       </div>
       <div style="margin-top:10px;">
-        <!-- <div v-if="getUser">
-          <router-link to="/user">회원목록</router-link>
-        </div>
-        <div v-else>
-          <font data-toggle="modal" data-target="#loginUserNullModal">회원목록</font>
-        </div> -->
-        <!-- <router-link to="/video">운동영상</router-link> -->
         <router-link to="/user" v-if="getUser === true">회원목록</router-link>
-        <!-- <router-link @click="openModal" v-if="getUser === false">회원목록</router-link> -->
         <a style="color:white; cursor:pointer;" data-toggle="modal" data-target="#loginUserNullModal" v-else>회원목록</a>
         <router-link to="/review">운동리뷰</router-link>
         <router-link :to="{ name: 'UserRegist' }">회원가입</router-link>
-        <!-- <a href="#" v-if="getUser" @click="logout">로그아웃</a>  -->
         
-        <!-- Example single danger button -->
         <div v-if="getUser" class="btn-group">
           <button type="button" class="btn dropdown-toggle" style="background-color:greenyellow; font-weight:;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{ loginUser.name }}님
@@ -35,8 +24,6 @@
           </div>
         </div>
         
-        
-        <!-- <font v-if="getUser" style="color:greenyellow;">{{ loginUser.name }} 님</font> -->
         <router-link to="/login" v-else>로그인</router-link>
       </div>
     </nav>
