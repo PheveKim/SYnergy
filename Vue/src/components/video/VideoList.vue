@@ -15,7 +15,7 @@
         </router-link>  
       </div>
       <!-- Example single danger button -->
-      <div class="btn-group">
+      <div class="btn-group" style="width:20%">
         <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           운동 부위 고르기
         </button>

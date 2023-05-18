@@ -1,5 +1,5 @@
 <template>
-  <header style="margin-bottom:30px;">
+  <header style="margin-bottom:;">
     <nav class="header-nav container">
       <div>
         <router-link  to="/" class="logo" style="margin-top:5px;">
