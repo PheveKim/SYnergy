@@ -1,0 +1,93 @@
+운동 카테고리화
+유튜브 주소 기입 자동 등록
+관리자 대시보드 (운동영상 / 회원목록에서 삭제)
+
+2023_05_10 (화)
+
+1. 1rm (단순히 계산 공식) 
+2. 계산 (1rm을 기반으로 고중량, 저중량에 따라 운동을 제시)
+3. 운동영상 (부위별 추천 영상)
+
+1. 로그인 / 로그아웃
+2. 영상 찜(좋아하는 영상)
+운동별 1rm 기록
+이를 기반으로 운동 방식 전환 
+
+2023_05_11 (수)
+
+-DB-
+User
+Video
+Review
++
+Favorites ( user.id , video.id ) // row 수가 많아진다는 단점.
+1reps (카테고리) (벤치, 스쾃, 데드, 바벨로우, 밀리터리프레스)
+분화할 때 저걸 위주로 짜주는 거지 
+
+벤치 - 플랫, 인클라인, 덤벨
+데드 - 데드
+바벨로우 - 로우류
+밀리터리 프레스 - 숄더
+스쾉 - 
+
+2023_05_12 (목)
+
+-Spring-
+1. model.dto
+User.java
+Video.java
+Review.java
+Favorites.java
+1rmWeight.java
+SearchCondition.java (User, Video 공통)
+
+2. model.dao
+UserDao.java
+VideoDao.java
+ReviewDao.java
+
+3. Controller
+UserRestController.java
+VideoRestController.java
+ReviewRestController.java
+WeightRestController.java
+
+4. model.service
+UserService.java
+UserServiceImpl.java
+VideoService.java
+VideoServiceImpl.java
+ReviewService.java
+ReviewServiceImpl.java
+
+5. mappers
+userMapper.xml
+videoMapper.xml
+reviewMapper.xml
+
+6. static
+application.properties (소스 연결)
+shcema.sql 작성
+
+훈련방식을 출력하는 건 저장하지 않고 프론트 단위에서 메소드를 통해 출력하는 정도
+또한 저장을 하고 싶다면 클립보드에 복사하는 기능 정도만 추가 추후 수정 가능 
+
+데드 - 100 : 훈련방식 선택 -> 
+
+벤치 - 100
+스쾃 - 100
+..
+
+2023.05.18(목)
+일반사용자의 회원목록대시보드 : 아이디 / 이름 / 이메일 / 나이 / 관리(회원탈퇴)
+관리자 회원목록대시보드 : 아이디 / 이름
+
+대시보드에서 아이디 클릭시 userDetail 로 연결. (loginUser 가 해당 id 일때만 클릭가능하게)
+admin도 예외는 없음.
+
+회원탈퇴 : 회원탈퇴 클릭 시 modal 이벤트를 열어서 해당 회원 delete() method 호출. id를 전달해서 삭제 진행. admin계정은 탈퇴못하도록 막음.
+
+검색창 : 검색창이 비어있을 경우, 전체 결과가 나오는것이 아니라 내용을 입력해달라고 alert 창을 띄움.
+
+헤더에 로그인 시 나의정보 / 로그아웃 을 dropdown 으로 만듬.
+운동부위고르기 dropdown 만들기만함 (링크는 연결 안함)
