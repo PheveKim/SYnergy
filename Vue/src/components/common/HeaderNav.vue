@@ -13,7 +13,23 @@
         <!-- <router-link to="/video">운동영상</router-link> -->
         <router-link to="/review">운동리뷰</router-link>
         <router-link :to="{ name: 'UserRegist' }">회원가입</router-link>
-        <a href="#" v-if="getUser" @click="logout">로그아웃</a>
+        <a href="#" v-if="getUser" @click="logout">로그아웃</a> 
+        
+        <!-- Example single danger button -->
+        <div v-if="getUser" class="btn-group">
+          <button type="button" class="btn dropdown-toggle" style="background-color:greenyellow; font-weight:;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ loginUser.name }}님
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">{{ loginUser.name }} 님</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </div>
+        
+        <!-- <font v-if="getUser" style="color:greenyellow;">{{ loginUser.name }} 님</font> -->
         <router-link to="/login" v-else>로그인</router-link>
       </div>
     </nav>
