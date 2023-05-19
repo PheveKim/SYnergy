@@ -57,6 +57,8 @@ export default new Vuex.Store({
     },
     LOGOUT: function (state) {
       state.loginUser = null;
+      alert("로그아웃 되었습니다.");
+      router.push("/");
     },
     SET_RANDOM_USER: function (state, user) {
       state.randomUser = user;
