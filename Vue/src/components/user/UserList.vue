@@ -8,16 +8,16 @@
     <h4>등록된 회원 수 : {{ userCnt }}</h4>
     <div v-if="userCnt">
       <div v-if="loginUser.id == 'admin'">
-        <table class="user-list">
+        <table class="table text-center">
           <colgroup>
             <col style="width: 5%" />
             <col style="width: 20%" />
-            <col style="width: 20%" />
-            <col style="width: 20%" />
+            <col style="width: 15%" />
+            <col style="width: 25%" />
             <col style="width: 15%" />
             <col style="width: 20%" />
           </colgroup>
-          <thead>
+          <thead class="thead-dark">
             <tr>
               <th>번호</th>
               <th>아이디</th>
@@ -51,13 +51,13 @@
       </div>
 
       <div v-else-if="loginUser.id != 'admin'">
-        <table class="user-list">
+        <table class="table">
           <colgroup>
             <col style="width: 10%" />
             <col style="width: 45%" />
             <col style="width: 45%" />
           </colgroup>
-          <thead>
+          <thead class="thead-dark">
             <tr>
               <th>번호</th>
               <th>아이디</th>
