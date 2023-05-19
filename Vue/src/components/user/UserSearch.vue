@@ -41,9 +41,10 @@
               <tr v-for="(user, index) in searchUsers" :key="index">
                 <td>{{ index + 1 }}</td>
                 <td>
-                  <router-link class="user-link" :to="`/user/${user.id}`">{{
-                    user.id
-                  }}</router-link>
+                  <router-link class="user-link" :to="`/user/${user.id}`" style="text-decoration-line: none;" v-if="loginUser.id === `${user.id}`">
+                  {{ user.id }}
+                  </router-link>
+                  <font v-else>{{ user.id }}</font>
                 </td>
                 <td>{{ user.name }}</td>
                 <td>{{ user.email }}</td>

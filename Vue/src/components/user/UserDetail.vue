@@ -27,6 +27,7 @@
       <button class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" @click="deleteUser">삭제</button>
     </fieldset>
   </div>
+  <div v-else></div>
   
   
 </template>
