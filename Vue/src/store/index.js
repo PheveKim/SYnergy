@@ -84,7 +84,7 @@ export default new Vuex.Store({
     SET_REVIEW: function (state, review) {
       state.review = review;
     },
-    SEARCH_REVIEW_TITLE: function (state, reviews) {
+    SEARCH_REVIEW_VIDEOID: function (state, reviews) {
       state.searchReviews = reviews;
     },
     RESET_STATE: function (state) {
@@ -359,7 +359,7 @@ export default new Vuex.Store({
         .then(() => {
           commit("CREATE_REVIEW", review);
           alert("등록되었습니다.");
-          router.push("/review");
+          // router.push(`/video/${review.videoid}`);
         })
         .catch((err) => {
           console.log(err);
@@ -430,18 +430,18 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    searchReviewTitle: function ({ commit }, title) {
+    searchReviewVideoid: function ({ commit }, videoid) {
       const API_URL = `http://localhost:9999/userapi/review/search`;
       axios({
         url: API_URL,
         method: "GET",
         params: {
-          key: "title",
-          word: title,
+          key: "videoid",
+          word: videoid,
         },
       })
         .then((res) => {
-          commit("SEARCH_REVIEW_TITLE", res.data);
+          commit("SEARCH_REVIEW_VIDEOID", res.data);
         })
         .catch((err) => {
           console.log(err);

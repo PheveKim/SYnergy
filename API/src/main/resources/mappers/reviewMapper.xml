@@ -7,7 +7,7 @@
 	<!-- 사용자 정보를 저장한다. id는 repo클래스의 메소드 이름과 일치시킨다. -->
 	<insert id="insert" parameterType="Review">
 		INSERT INTO reviews
-		VALUES(#{userid}, #{videoid}, #{title}, #{content})
+		VALUES(#{id}, #{userid}, #{videoid}, #{title}, #{content})
 	</insert>
 	
 	<delete id="delete" parameterType="string">

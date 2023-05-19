@@ -13,7 +13,7 @@
 	<artifactId>user</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SYNERGY_API</name>
-	<description>사용자관리 BootVersion</description>
+	<description>SYnergy BootVersion</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>

@@ -32,13 +32,6 @@
 
       <div class="row">
         <div class="col" v-for="(video, index) in videos" :key="index">
-          <!-- <div>{{ index + 1 }}</div> -->
-          <!-- <div>
-            <router-link class="video-link" :to="`/video/${video.id}`">{{
-              video.id
-            }}</router-link>
-          </div> -->
-          
           <div style="border-radius:100px; margin-top:20px; margin-bottom:5px;">
             <iframe
               style="border-radius:15px;"

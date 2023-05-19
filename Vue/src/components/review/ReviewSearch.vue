@@ -57,7 +57,6 @@
   </div>
 </template>
 <script>
-// import { mapState, ___________, mapGetters } from "vuex";
 import { mapState, mapGetters } from "vuex";
 export default {
   name: "ReviewSearch",
@@ -68,7 +67,7 @@ export default {
   },
   methods: {
     searchReview() {
-      this.$store.dispatch("searchReview", this.search);
+      this.$store.dispatch("searchReviewVideoid", this.search);
     },
   },
   computed: {
