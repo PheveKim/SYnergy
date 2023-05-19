@@ -11,8 +11,9 @@
         <router-link to="/user" v-if="getUser === true">회원목록</router-link>
         <a style="color:white; cursor:pointer;" data-toggle="modal" data-target="#loginUserNullModal" v-else>회원목록</a>
         <router-link to="/review">운동리뷰</router-link>
+        <span v-if="loginUser===null">
         <router-link :to="{ name: 'UserRegist' }">회원가입</router-link>
-        
+      </span>
         <div v-if="getUser" class="btn-group">
           <button type="button" class="btn dropdown-toggle" style="background-color:greenyellow; font-weight:;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{ loginUser.name }}님
