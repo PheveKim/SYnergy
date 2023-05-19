@@ -1,7 +1,5 @@
 <template>
   <div class="container">
-    <!-- <h2>운동 영상</h2> -->
-    <!-- <h4>등록된 영상 수 : {{ videoCnt }}</h4> -->
     <video-search></video-search>
     <div class="row">
       <div class="col">
@@ -12,12 +10,12 @@
           <button class="btn btn-lg" style="width:120px; background-color:greenyellow; font-weight:bold;">
             영상등록
           </button>
-        </router-link>  
+        </router-link>
       </div>
       <!-- Example single danger button -->
-      <div class="btn-group" style="width:20%">
-        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          운동 부위 고르기
+      <div class="btn-group" style="width:200px;">
+        <button type="button" class="btn btn-danger dropdown-toggle btn-lg" style="font-weight:bold;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          운동 부위
         </button>
         <div class="dropdown-menu ">
           <a class="dropdown-item" href="#">등</a>
