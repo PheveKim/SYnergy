@@ -103,7 +103,7 @@ export default new Vuex.Store({
         .then(() => {
           commit("CREATE_USER", user);
           alert("등록되었습니다.");
-          router.push("/user");
+          router.push("/login");
         })
         .catch((err) => {
           console.log(err);
