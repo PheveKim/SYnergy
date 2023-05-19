@@ -102,4 +102,4 @@ admin도 예외는 없음.
 
 회원목록에서 검색 시 본인 정보만 열람 가능하도록 변경했습니다.
 
-UserList 의 table 을 bootstrap table class 로 디자인변경
+LoginForm / UserRegist / UserDetail 창 디자인 통일 진행.

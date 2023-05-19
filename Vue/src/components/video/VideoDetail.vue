@@ -1,6 +1,22 @@
 <template>
   <div class="container">
-    <h2>영상 정보</h2>
+    <div class="" style="margin-top:20px; margin-bottom:10px;">
+      <font style="font-weight:bold; font-size:20px;">{{ video.title }}</font>
+    </div>
+    <div class="text-center">
+      <iframe
+        style="border-radius:20px;"
+        width="1300" 
+        height="563" :src="`https://www.youtube.com/embed/${ video.youtubeurl }`"
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="" style="margin-top:20px; margin-bottom:10px;">
+      <a style="font-weight:; font-size:18px; color:blue;" href="https://www.youtube.com/watch?v=${video.youtubeurl}">유튜브 바로가기</a><br>
+      <font style="font-weight:; font-size:18px;">{{ video.content }}</font>
+    </div>
     <fieldset class="text-center">
       <label for="id">아이디</label>
       <input
