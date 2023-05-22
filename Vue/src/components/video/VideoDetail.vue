@@ -1,6 +1,6 @@
 <template>
   <div style="background-color:#eee;">
-    <div class="container">
+    <div class="container" style="padding-bottom:100px;">
       <br>
       <div class="card rounded-3" style="margin-top:; margin-bottom:20px;">
         <div class="card-body row">
@@ -20,14 +20,14 @@
       </div>
       <div class="card rounded-3" style="background-color:white; margin-top:20px; margin-bottom:10px;">
         <div class="card-body row">
-          <div class="col">
+          <div class="col-8">
             <a style="font-weight:; font-size:18px; color:blue;" :href="`https://www.youtube.com/watch?v=${video.youtubeurl}`">Youtube 바로가기</a><br>
             <font style="font-weight:bold; font-size:18px;">운동부위 : {{ video.fitpartname }}</font><br>
             <font style="font-weight:bold; font-size:18px;">{{ video.content }}</font>
           </div>
-          <div class="col" style="text-align:right;" v-if="loginUser != null && loginUser.id === 'admin'">
+          <div class="col-4" style="text-align:right;" v-if="loginUser != null && loginUser.id === 'admin'">
             <button class="btn btn-lg" style="width:150px; background-color:greenyellow;" type="button" data-toggle="collapse" data-target="#collapseVideoDetail" aria-expanded="false" aria-controls="collapseVideoDetail">
-              영상 수정
+              영상수정
             </button>
           </div>
         </div>
@@ -66,9 +66,16 @@
         <div class="card rounded-3" style="background-color:white; margin-top:20px;">
           <font class="card-body" style="font-weight:bold; font-size:20px; border-bottom:1px solid #e1e1e1;">리뷰</font>
           <div class="card-body" v-for="(searchReview, index) in searchReviews" :key="index" style="border-bottom:1px solid #e1e1e1;">
-            <font style="font-weight:bold; font-size:18px;">{{ searchReview.userid }}</font><br>
-            <font style="font-weight:bold; font-size:18px;">{{ searchReview.title }}</font><br>
-            <font style="font-weight:bold; font-size:18px;">{{ searchReview.content }}</font>
+            <div class="row">
+              <div class="col-1" style="padding-left:30px; padding-top:5px;">
+                <img src="@/assets/logo2.png" style="border-radius:100%; width:50px;">
+              </div>
+              <div class="col-11">
+                <font style="font-weight:bold; font-size:18px; color:blue;">{{ searchReview.userid }}</font><br>
+                <font style="font-weight:bold; font-size:18px;">{{ searchReview.title }}</font><br>
+                <font style="font-weight:; font-size:18px;">{{ searchReview.content }}</font>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -77,6 +84,13 @@
         <button class="btn btn-primary btn-lg" style="width:100%;" type="button" data-toggle="collapse" data-target="#collapseReviewRegist" aria-expanded="false" aria-controls="collapseReviewRegist">
           리뷰 작성하기
         </button>
+      </div>
+      <div class="row" style="padding-left:5px; padding-right:20px;" v-else-if="loginUser == null">
+        <router-link to="/login">
+          <button class="btn btn-lg" style="width:100%; background-color:black; color:white;" type="text">
+            리뷰를 남기려면 로그인하세요.
+          </button>
+        </router-link>
       </div>
       <div class="collapse" id="collapseReviewRegist" style="margin-top:15px; margin-bottom:20px;">
         <div class="card card-body">

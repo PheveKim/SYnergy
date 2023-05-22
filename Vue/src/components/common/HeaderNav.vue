@@ -28,7 +28,8 @@
         <router-link to="/login" v-else>로그인</router-link>
       </div>
     </nav>
-
+    
+    
     <!-- Modal -->
     <div class="modal fade" id="loginUserNullModal" tabindex="-1" role="dialog" aria-labelledby="loginUserNullModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
