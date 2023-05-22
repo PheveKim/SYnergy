@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col">
         <font style="font-weight:bold; font-size:30px;">운동 영상 목록 ({{ videoCnt }})</font>
-      </div>
+      </div> 
       <div class="col" style="text-align:right;" >
         <router-link :to="{ name: 'VideoRegist' }"  v-if="loginUser">
           <button class="btn btn-lg" style="width:120px; background-color:greenyellow; font-weight:bold;">
