@@ -24,7 +24,7 @@
           <a class="dropdown-item" href="#">어깨</a>
           <a class="dropdown-item" href="#">복근</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">기타</a>
+          <a class="dropdown-item" href="#">기타</a> 
         </div>
       </div>
     </div>
