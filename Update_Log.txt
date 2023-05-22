@@ -112,3 +112,5 @@ ReviewSearch (ReviewSearchVieoid 로 videoid 로 검색해서 해당 video 에 �
 2023.05.22(월)
 1. 리뷰 디자인 변경.
 2. 영상등록 '로그인' 시에만 가능하도록 변경.
+3. 영상등록 운동부위, YoutubeURL 만 받아서 JSOUP 으로 비디오 상세 내용 받아오기
+4. 

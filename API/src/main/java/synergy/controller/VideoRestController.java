@@ -21,9 +21,14 @@ import synergy.model.dto.SearchCondition;
 import synergy.model.dto.Video;
 import synergy.model.service.VideoService;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
 @RestController
 @RequestMapping("/userapi")
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET , RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+		RequestMethod.DELETE })
 public class VideoRestController {
 
 	@Autowired
@@ -88,19 +93,57 @@ public class VideoRestController {
 //			return exceptionHandling(e);
 //		}
 //	}
-	
+
+	// 유튜브 url 로 비디오 등록하기
+	// url 입력시 바로 등록되도록.
 	@PostMapping("/video")
 	@ApiOperation(value = "비디오 정보를 삽입한다.", response = Integer.class)
 	public ResponseEntity<?> insert(@RequestBody Video video) {
+		String YoutubeURL = video.getYoutubeurl();
+		String videoID = YoutubeURL.substring(32, YoutubeURL.length());
+		if (YoutubeURL != null) {
+			String apiUrl = YoutubeURL;
+			try {
+				Document doc = Jsoup.connect(apiUrl).get();
+				Element body = doc.body();
+				String title = doc.select("meta[name=title]").attr("content");
+				String content = doc.select("meta[name=description]").attr("content");
+				String channelName = doc.select("a.yt-simple-endpoint.style-scope.yt-formatted-string").text();
+				String genre = body.getElementsByAttributeValue("itemprop", "genre").attr("content");
+				
+				video.setTitle(title);
+				video.setContent(content);
+				video.setChannelname(channelName);
+				video.setYoutubeurl(videoID);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
 		try {
-			System.out.println(video);
 			int result = vs.insert(video);
 			return new ResponseEntity<Integer>(result, HttpStatus.CREATED);
-
+			
 		} catch (Exception e) {
 			return exceptionHandling(e);
 		}
 	}
+	
+	
+	// 기존 영상 등록
+//	@PostMapping("/video")
+//	@ApiOperation(value = "비디오 정보를 삽입한다.", response = Integer.class)
+//	public ResponseEntity<?> insert(@RequestBody Video video) {
+//		try {
+//			System.out.println(video);
+//			int result = vs.insert(video);
+//			return new ResponseEntity<Integer>(result, HttpStatus.CREATED);
+//
+//		} catch (Exception e) {
+//			return exceptionHandling(e);
+//		}
+//	}
 
 	@PutMapping("/video")
 	@ApiOperation(value = "비디오 정보를 수정한다.", response = Integer.class)
@@ -113,7 +156,7 @@ public class VideoRestController {
 			return exceptionHandling(e);
 		}
 	}
-	
+
 	@DeleteMapping("/video/{id}")
 	@ApiOperation(value = "{id} 에 해당하는 비디오 정보를 삭제한다.", response = Integer.class)
 	public ResponseEntity<?> delete(@PathVariable String id) {
@@ -125,7 +168,7 @@ public class VideoRestController {
 			return exceptionHandling(e);
 		}
 	}
-	
+
 	private ResponseEntity<String> exceptionHandling(Exception e) {
 		e.printStackTrace();
 		return new ResponseEntity<String>("Sorry: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
