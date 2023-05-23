@@ -70,7 +70,8 @@ export default {
         password: this.password,
       };
 
-      this.$store.dispatch("setLoginUser", user);
+      // this.$store.dispatch("setLoginUser", user);
+      this.$store.dispatch("loginUser",user);
     },
 
   },

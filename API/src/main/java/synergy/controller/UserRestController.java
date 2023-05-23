@@ -1,6 +1,9 @@
 package synergy.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +23,7 @@ import io.swagger.annotations.ApiOperation;
 import synergy.model.dto.SearchCondition;
 import synergy.model.dto.User;
 import synergy.model.service.UserService;
+import synergy.util.JwtUtil;
 
 @RestController
 @RequestMapping("/userapi")
@@ -28,7 +32,42 @@ public class UserRestController {
 
 	@Autowired
 	UserService us;
+	
+	@Autowired
+	JwtUtil jwtUtil;
 
+	
+	//jwt 로그인 ------------------------------------------------------------
+	@PostMapping("/login")
+	@ApiOperation("로그인")
+	public ResponseEntity<?> login(@RequestBody User user) throws UnsupportedEncodingException{
+		Map<String, Object> result = new HashMap<String, Object>();
+		User loginUser = us.searchById(user.getId());
+//		System.out.println(user);
+//		System.out.println(jwtUtil.createToken(loginUser));
+		if(loginUser!=null&& loginUser.getPassword().equals(user.getPassword())) {
+			HttpStatus status =null;
+			try {
+				result.put("accessToken",jwtUtil.createToken(loginUser));
+				result.put("message","SUCCESS");
+				status=HttpStatus.ACCEPTED;
+			}catch(UnsupportedEncodingException e){
+				result.put("message","FAIL");
+				status= HttpStatus.UNAUTHORIZED;
+			}
+			return new ResponseEntity<Map<String,Object>>(result,status);
+			
+			
+		}else {
+			result.put("message","FAIL");
+			return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
+		}
+	}
+	
+	
+	
+	
+	//---------------------------------------------------------------------
 	@GetMapping("/user")
 	@ApiOperation(value = "등록된 모든 사용자 정보를 반환한다.", response = User.class)
 	public ResponseEntity<?> selectAll() {

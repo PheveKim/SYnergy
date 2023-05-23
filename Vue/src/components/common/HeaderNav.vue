@@ -8,6 +8,7 @@
         </router-link>
       </div>
       <div style="margin-top:10px;">
+        <router-link to="/recommend">AI 추천</router-link>
         <router-link to="/user" v-if="getUser === true">회원목록</router-link>
         <a style="color:white; cursor:pointer;" data-toggle="modal" data-target="#loginUserNullModal" v-else>회원목록</a>
         <router-link to="/review">운동리뷰</router-link>
