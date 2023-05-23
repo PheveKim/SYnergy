@@ -54,9 +54,12 @@ export default new Vuex.Store({
     },
     SET_LOGIN_USER: function (state, user) {
       state.loginUser = user;
+      sessionStorage.setItem("loginUser",JSON.stringify(user));
+      console.log(user);
     },
     LOGOUT: function (state) {
       state.loginUser = null;
+      sessionStorage.removeItem("loginUser");
       alert("로그아웃 되었습니다.");
       router.push("/");
     },

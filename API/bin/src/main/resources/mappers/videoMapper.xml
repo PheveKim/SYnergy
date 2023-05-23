@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- name space는 UserRepo의 fully qualified name으로 설정한다. -->
+<mapper namespace="synergy.model.dao.VideoDao">
+
+	<!-- 사용자 정보를 저장한다. id는 repo클래스의 메소드 이름과 일치시킨다. -->
+	<insert id="insert" parameterType="Video">
+		INSERT INTO videos
+		VALUES(#{id}, #{title}, #{content}, #{fitpartname}, #{youtubeurl} , #{channelname}, #{viewcnt})
+	</insert>
+	
+	<delete id="delete" parameterType="string">
+		DELETE FROM videos
+		WHERE id = #{id}
+	</delete>
+	
+	<update id="update" parameterType="Video">
+		UPDATE videos
+		SET title = #{title} , content = #{content} , fitpartname = #{fitpartname}, youtubeurl = #{youtubeurl}, channelname = #{channelname}
+		WHERE id = #{id}
+	</update>
+	
+	<!-- 사용자를 id로 검색하여 조회한다. id는 repo클래스의 메소드 이름과 일치시킨다. -->
+	<select id="searchById" parameterType="string"
+		resultType="Video">
+		SELECT *
+		FROM videos WHERE id = #{id}
+	</select>
+
+	<!-- 사용자 이름으로 검색하여 조회한다. id는 repo클래스의 메소드 이름과 일치시킨다. -->
+	<select id="searchByTitle" parameterType="string"
+		resultType="Video">
+		SELECT *
+		FROM videos WHERE title LIKE
+		CONCAT('%',#{title},'%')
+	</select>
+
+	<!-- 모든 사용자 정보를 검색한다. id는 repo클래스의 메소드 이름과 일치시킨다. -->
+	<select id="selectAll" resultType="Video">
+		SELECT * FROM videos
+	</select>
+	
+	<select id="searchByCondition" parameterType="SearchCondition" resultType="Video">
+		SELECT * FROM videos
+		<if test="key!='none'">
+			WHERE ${key} LIKE CONCAT('%' #{word} '%')
+		</if>
+		<if test="orderBy!='none'">
+			ORDER BY ${orderBy} ${orderByDir}
+		</if>
+	</select>
+
+	
+</mapper>
