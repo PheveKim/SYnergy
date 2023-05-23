@@ -4,8 +4,8 @@
       <br>
       <div class="card rounded-3" style="margin-top:; margin-bottom:20px;">
         <div class="card-body row">
-          <div class="col"><font style="font-weight:bold; font-size:20px;">{{ video.title }}</font></div>
-          <div class="col" style="text-align:right; padding-right:20px;"><font style="font-weight:bold; font-size:20px; color:blue;">{{ video.channelname }}</font></div>
+          <div class="col-8"><font style="font-weight:bold; font-size:20px;">{{ video.title }}</font></div>
+          <div class="col-4" style="text-align:right; padding-right:20px;"><font style="font-weight:bold; font-size:20px; color:blue;">{{ video.channelname }}</font></div>
         </div>
       </div>
       <div class="text-center">

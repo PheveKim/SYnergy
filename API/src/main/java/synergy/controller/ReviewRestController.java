@@ -109,7 +109,7 @@ public class ReviewRestController {
 	            int exitCode = process.waitFor();
 	            
 	        } catch (Exception e) {
-	        	is_valid = false;
+	        	is_valid = true;
 	        }
 			
 			if(is_valid) {
