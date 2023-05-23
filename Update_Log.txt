@@ -113,4 +113,17 @@ ReviewSearch (ReviewSearchVieoid 로 videoid 로 검색해서 해당 video 에 �
 1. 리뷰 디자인 변경.
 2. 영상등록 '로그인' 시에만 가능하도록 변경.
 3. 영상등록 운동부위, YoutubeURL 만 받아서 JSOUP 으로 비디오 상세 내용 받아오기
-4. 
+4. bard api 연결 시도
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 9da3382f720231036b5a74a706205a5c440d66f9
+5. bard api 연결 성공. 운동부위 자동 인식 구현.
+6. reviews Table 에 title : VARCHAR -> TEXT 로 변환. (길이 초과시 에러나기 때문)
+7. videos Table 에 title : VARCHAR -> TEXT 로 변환.
+8. bard api -> 리뷰작성시 욕설 판별 구현.
+<<<<<<< HEAD
+>>>>>>> 9da3382f720231036b5a74a706205a5c440d66f9
+=======
+>>>>>>> 9da3382f720231036b5a74a706205a5c440d66f9

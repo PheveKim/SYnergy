@@ -347,7 +347,6 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-
     createReview: function ({ commit }, review) {
       console.log(review)
       const API_URL = `http://localhost:9999/userapi/review`;
@@ -356,12 +355,23 @@ export default new Vuex.Store({
         method: "POST",
         data: review,
       })
-        .then(() => {
-          commit("CREATE_REVIEW", review);
-          alert("등록되었습니다.");
+        .then(function (response) {
+          console.log(response.data);
+          console.log(response.status);
+
+          if(response.status === 201){
+            alert("등록되었습니다!");
+            commit("CREATE_REVIEW", review);
+          }
+          else{
+            alert("욕설이 포함되어있습니다! 다시 작성해주세요.");
+          }
+          
+          router.push('/video');
           // router.push(`/video/${review.videoid}`);
         })
         .catch((err) => {
+          alert("에러발생!");
           console.log(err);
         });
     },

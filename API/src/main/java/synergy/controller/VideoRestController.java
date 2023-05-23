@@ -1,5 +1,7 @@
 package synergy.controller;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,7 +105,7 @@ public class VideoRestController {
 		String videoID = YoutubeURL.substring(32, YoutubeURL.length());
 		if (YoutubeURL != null) {
 			String apiUrl = YoutubeURL;
-			try {
+			try { 
 				Document doc = Jsoup.connect(apiUrl).get();
 				Element body = doc.body();
 				String title = doc.select("meta[name=title]").attr("content");
@@ -115,6 +117,31 @@ public class VideoRestController {
 				video.setContent(content);
 				video.setChannelname(channelName);
 				video.setYoutubeurl(videoID);
+				
+				String fitpartname = "전신";
+				try {
+					ProcessBuilder pb = new ProcessBuilder("C:\\Users\\SSAFY\\AppData\\Local\\Programs\\Python\\Python39\\python",
+							System.getProperty("user.dir") + "\\src\\main\\resources\\python\\bard_fitpartname.py", title + content);
+		            Process process = pb.start();
+		            
+		            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream(), "euc-kr"));
+		            String line;
+		            line = reader.readLine();
+		            String reline = line.replaceAll("[^0-9]","");
+		            
+		            if(reline.equals("1")) fitpartname = "등";
+		            else if(reline.equals("2")) fitpartname = "가슴";
+		            else if(reline.equals("3")) fitpartname = "하체";
+		            else if(reline.equals("4")) fitpartname = "어깨";
+		            else if(reline.equals("5")) fitpartname = "팔";
+		            
+		            int exitCode = process.waitFor();
+		        } catch (Exception e) {
+		            fitpartname = "전신";
+		        }
+				video.setFitpartname(fitpartname);
+				
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

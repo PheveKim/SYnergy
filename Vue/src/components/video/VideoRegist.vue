@@ -8,13 +8,13 @@
       <input type="text" id="title" v-model="title" class="view" /><br />
       <label for="content">내용</label>
       <input type="text" id="content" v-model="content" class="view" /><br /> -->
-      <label for="fitpartname">운동 부위</label>
-      <input type="text" id="fitpartname" v-model="fitpartname" class="view" /><br />
+      <!-- <label for="fitpartname">운동 부위</label>
+      <input type="text" id="fitpartname" v-model="fitpartname" class="view" /><br /> -->
       <label for="youtubeurl">youtubeurl</label>
       <input type="text" id="youtubeurl" v-model="youtubeurl" class="view" /><br />
       <!-- <label for="channelname">channelname</label>
       <input type="text" id="channelname" v-model="channelname" class="view" /><br /> -->
-      <button type="button" class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" @click="regist">등록</button>
+      <button type="button" class="btn btn-lg" onClick="this.disabled=true; this.value='Sending…';" style="background-color:greenyellow; font-weight:bold;" @click="regist">등록</button>
     </fieldset>
   </div>
 </template>
@@ -27,7 +27,7 @@ export default {
       // id: "",
       // title: "",
       // content: "",
-      fitpartname: "",
+      // fitpartname: "",
       youtubeurl: "",
       // channelname: "",
     };
@@ -38,7 +38,7 @@ export default {
         // this.id === "" ||
         // this.title === "" ||
         // this.content === "" ||
-        this.fitpartname === "" ||
+        // this.fitpartname === "" ||
         this.youtubeurl === ""
         // this.channelname === ""
       ) {
@@ -50,7 +50,7 @@ export default {
         // id: this.id,
         // title: this.title,
         // content: this.content,
-        fitpartname: this.fitpartname,
+        // fitpartname: this.fitpartname,
         youtubeurl: this.youtubeurl,
         // channelname: this.channelname,
       };

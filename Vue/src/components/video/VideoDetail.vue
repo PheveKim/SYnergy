@@ -100,7 +100,7 @@
             <input type="text" id="title" v-model="title" class="view" /><br />
             <label for="content">내용</label>
             <input type="text" id="content" v-model="content" class="view" style="height:300px;"/><br />
-            <button type="button" class="btn btn-lg" style="background-color:greenyellow;" @click="ReviewRegist">등록</button>
+            <button type="button" class="btn btn-lg" style="background-color:greenyellow;" @click="ReviewRegist" onClick="this.disabled=true; this.value='Sending…';">등록</button>
           </fieldset>
         
         </div>
@@ -145,7 +145,7 @@ export default {
       };
 
       this.$store.dispatch("createReview", review);
-      this.$router.go(this.$router.currentRoute);
+      // this.$router.go(this.$router.currentRoute);
     },
 
   },

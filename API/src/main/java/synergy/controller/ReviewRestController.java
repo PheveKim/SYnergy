@@ -1,5 +1,7 @@
 package synergy.controller;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,9 +95,30 @@ public class ReviewRestController {
 	@ApiOperation(value = "리뷰 정보를 삽입한다.", response = Integer.class)
 	public ResponseEntity<?> insert(@RequestBody Review review) {
 		try {
-			System.out.println(review);
-			int result = rs.insert(review);
-			return new ResponseEntity<Integer>(result, HttpStatus.CREATED);
+			boolean is_valid = false;
+			try {
+				ProcessBuilder pb = new ProcessBuilder("C:\\Users\\SSAFY\\AppData\\Local\\Programs\\Python\\Python39\\python",
+						System.getProperty("user.dir") + "\\src\\main\\resources\\python\\bard_validInput.py", review.getTitle() + review.getContent());
+	            Process process = pb.start();
+	            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream(), "euc-kr"));
+	            String line;
+	            line = reader.readLine();
+	            String reline = line.replaceAll("[^0-9]","");
+	            if(reline.equals("1")) is_valid = false;
+	            else if(reline.equals("2")) is_valid = true;
+	            int exitCode = process.waitFor();
+	            
+	        } catch (Exception e) {
+	        	is_valid = false;
+	        }
+			
+			if(is_valid) {
+				int result = rs.insert(review);
+				return new ResponseEntity<Integer>(result, HttpStatus.CREATED);
+			}
+			else {
+				return new ResponseEntity<String>("Invalid Input : 욕설이 존재합니다.", HttpStatus.NO_CONTENT);
+			}
 
 		} catch (Exception e) {
 			return exceptionHandling(e);
