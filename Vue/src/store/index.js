@@ -52,14 +52,21 @@ export default new Vuex.Store({
     SEARCH_NAME: function (state, users) {
       state.searchUsers = users;
     },
-    SET_LOGIN_USER: function (state, user) {
-      state.loginUser = user;
-      sessionStorage.setItem("loginUser",JSON.stringify(user));
-      console.log(user);
+    // SET_LOGIN_USER: function (state, user) {
+    //   state.loginUser = user;
+    //   sessionStorage.setItem("loginUser",JSON.stringify(user));
+    //   console.log(user);
+    // },
+    SET_LOGIN_USER: function (state, accessToken) {
+      const base64Url = accessToken.split('.')[1];
+      const base64= base64Url.replace(/-/g,"+").replace(/_/g,"/");
+      const payload = Buffer.from(base64,'base64');
+      const result = JSON.parse(payload.toString());
+      state.loginUser=result.user;
     },
     LOGOUT: function (state) {
       state.loginUser = null;
-      sessionStorage.removeItem("loginUser");
+      sessionStorage.removeItem("accessToken");
       alert("로그아웃 되었습니다.");
       router.push("/");
     },
@@ -97,6 +104,26 @@ export default new Vuex.Store({
     },
   },
   actions: {
+// jwt 코드 추가 -------------------------------------------
+    loginUser: function({commit},user){
+      const API_URL = "http://localhost:9999/userapi/login";
+      
+      axios({
+        url:API_URL,
+        method:"POST",
+        data:user,
+      }).then((res)=>{
+        alert("로그인 성공!");
+        sessionStorage.setItem("accessToken",res.data.accessToken);
+        commit("SET_LOGIN_USER",res.data.accessToken);
+        router.push("/");
+        
+      }).catch((err)=>{
+        alert("로그인 실패");
+        console.log(err);
+      });
+    },
+//------------------------------------------------------
     createUser: function ({ commit }, user) {
       console.log(user)
       const API_URL = `http://localhost:9999/userapi/user`;
@@ -213,26 +240,27 @@ export default new Vuex.Store({
     //       console.log(err);
     //     });
     // },
-    setLoginUser: function ({ commit }, user) {
-      const API_URL = `http://localhost:9999/userapi/user/${user.id}`;
-      axios({
-        url: API_URL,
-        method: "GET",
-      })
-        .then((res) => {
-          let resUser = res.data;
-          if (resUser.id === user.id && resUser.password === user.password) {
-            alert("로그인 성공!");
-            commit("SET_LOGIN_USER", res.data);
-            router.push("/");
-          } else {
-            alert("로그인 실패");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
+    // setLoginUser: function ({ commit }, user) {
+    //   const API_URL = `http://localhost:9999/userapi/user/${user.id}`;
+      
+    //   axios({
+    //     url: API_URL,
+    //     method: "GET",
+    //   })
+    //     .then((res) => {
+    //       let resUser = res.data;
+    //       if (resUser.id === user.id && resUser.password === user.password) {
+    //         alert("로그인 성공!");
+    //         commit("SET_LOGIN_USER", res.data);
+    //         router.push("/");
+    //       } else {
+    //         alert("로그인 실패");
+    //       }
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // },
     setRandomUser: async function ({ commit }) {
       const API_URL = `https://random-data-api.com/api/users/random_user`;
 

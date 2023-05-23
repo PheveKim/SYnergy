@@ -16,6 +16,7 @@ new Vue({
   render: (h) => h(App)
 }).$mount("#app");
 
-const loginUser = JSON.parse(sessionStorage.getItem("loginUser"));
-if(loginUser) store.commit("SET_LOGIN_USER",loginUser);
+const accessToken = sessionStorage.getItem("accessToken");
+
+if(accessToken) store.commit("SET_LOGIN_USER",accessToken);
 
