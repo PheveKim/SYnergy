@@ -43,8 +43,6 @@ public class UserRestController {
 	public ResponseEntity<?> login(@RequestBody User user) throws UnsupportedEncodingException{
 		Map<String, Object> result = new HashMap<String, Object>();
 		User loginUser = us.searchById(user.getId());
-		System.out.println(user);
-		System.out.println(jwtUtil.createToken(loginUser));
 		if(loginUser!=null&& loginUser.getPassword().equals(user.getPassword())) {
 			HttpStatus status =null;
 			try {

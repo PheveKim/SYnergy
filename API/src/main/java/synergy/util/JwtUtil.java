@@ -21,7 +21,7 @@ public class JwtUtil {
 		return Jwts.builder()
 				.setHeaderParam("alg", "HS256")
 				.setHeaderParam("typ", "JWT")
-				.claim("user",user)
+				.claim("userId",user.getId())
 				.signWith(SignatureAlgorithm.HS256, SALT.getBytes("UTF-8"))
 				.compact();
 				
