@@ -14,6 +14,8 @@ import Review from "../views/Review.vue";
 import ReviewList from "@/components/review/ReviewList.vue";
 import ReviewRegist from "@/components/review/ReviewRegist.vue";
 import ReviewDetail from "@/components/review/ReviewDetail.vue";
+import Recommend from "../views/Recommend.vue";
+import OneRM from "@/components/recommend/OneRM.vue";
 
 Vue.use(VueRouter);
 
@@ -88,6 +90,17 @@ const routes = [
         path: ":id",
         name: "ReviewDetail",
         component: ReviewDetail,
+      },
+    ],
+  },
+  {
+    path: "/recommend",
+    component: Recommend,
+    children: [
+      {
+        path: "",
+        name: "OneRM",
+        component: OneRM,
       },
     ],
   },

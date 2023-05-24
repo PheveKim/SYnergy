@@ -43,6 +43,7 @@ public class UserRestController {
 	public ResponseEntity<?> login(@RequestBody User user) throws UnsupportedEncodingException{
 		Map<String, Object> result = new HashMap<String, Object>();
 		User loginUser = us.searchById(user.getId());
+
 		if(loginUser!=null&& loginUser.getPassword().equals(user.getPassword())) {
 			HttpStatus status =null;
 			try {
@@ -142,13 +143,36 @@ public class UserRestController {
 	@PutMapping("/user")
 	@ApiOperation(value = "사용자 정보를 수정한다.", response = Integer.class)
 	public ResponseEntity<?> update(@RequestBody User user) {
-		try {
-			int result = us.update(user);
-			return new ResponseEntity<Integer>(result, HttpStatus.OK);
+		us.update(user);
+		Map<String, Object> result = new HashMap<String, Object>();
+		User loginUser = us.searchById(user.getId());
 
-		} catch (Exception e) {
-			return exceptionHandling(e);
+		if(loginUser!=null&& loginUser.getPassword().equals(user.getPassword())) {
+			HttpStatus status =null;
+			try {
+				result.put("accessToken",jwtUtil.createToken(loginUser));
+				result.put("message","SUCCESS");
+				status=HttpStatus.ACCEPTED;
+			}catch(UnsupportedEncodingException e){
+				result.put("message","FAIL");
+				status= HttpStatus.UNAUTHORIZED;
+			}
+			return new ResponseEntity<Map<String,Object>>(result,status);
+			
+			
+		}else {
+			result.put("message","FAIL");
+			return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
 		}
+		
+		
+//		try {
+//			int result = us.update(user);
+//			return new ResponseEntity<Integer>(result, HttpStatus.OK);
+//
+//		} catch (Exception e) {
+//			return exceptionHandling(e);
+//		}
 	}
 	
 	@DeleteMapping("/user/{id}")

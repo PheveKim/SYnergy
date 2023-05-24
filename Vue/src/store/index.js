@@ -18,6 +18,7 @@ export default new Vuex.Store({
     reviews: [],
     searchReviews: [],
     review: {},
+    searchOneRMOutput: {},
   },
   getters: {
     userCnt: function (state) {
@@ -41,7 +42,7 @@ export default new Vuex.Store({
   },
   mutations: {
     CREATE_USER: function (state, user) {
-      state.users.push(user);
+      state.users.push(user); 
     },
     SET_USERS: function (state, users) {
       state.users = users;
@@ -62,7 +63,11 @@ export default new Vuex.Store({
       const base64= base64Url.replace(/-/g,"+").replace(/_/g,"/");
       const payload = Buffer.from(base64,'base64');
       const result = JSON.parse(payload.toString());
-      state.loginUser=result.user;
+      const user = {
+        id: result.userId,
+        name: result.userName,
+      }
+      state.loginUser=user;
     },
     LOGOUT: function (state) {
       state.loginUser = null;
@@ -102,6 +107,9 @@ export default new Vuex.Store({
       state.searchVideos = [];
       state.searchReviews = [];
     },
+    SEARCH_ONE_RM: function (state, searchOneRMOutput) {
+      state.searchOneRMOutput = searchOneRMOutput;
+    }
   },
   actions: {
 // jwt 코드 추가 -------------------------------------------
@@ -159,14 +167,16 @@ export default new Vuex.Store({
     updateUser: function ({commit}, user) {
       console.log(commit);
       const API_URL = `http://localhost:9999/userapi/user`;
+      sessionStorage.removeItem("accessToken");
       axios({
         url: API_URL,
         method: "PUT",
         data: user,
       })
-        .then(() => {
+        .then((res) => { 
           alert("수정 완료!");
-          router.push("/user");
+          sessionStorage.setItem("accessToken",res.data.accessToken);
+          router.go(0);
         })
         .catch((err) => {
           console.log(err);
@@ -177,6 +187,7 @@ export default new Vuex.Store({
       axios({
         url: API_URL,
         method: "DELETE",
+        
       })
         .then(() => {
           alert("삭제 완료!");
@@ -187,7 +198,12 @@ export default new Vuex.Store({
             }
           }
           state.users.splice(index, 1);
-          router.push("/user");
+          if(state.loginUser.id===id){
+          state.loginUser = null;
+          sessionStorage.removeItem("accessToken");
+          router.push("/");
+          }
+          // router.push("/user");
         })
         .catch((err) => {
           console.log(err);
@@ -341,6 +357,7 @@ export default new Vuex.Store({
               index = i;
             }
           }
+
           state.videos.splice(index, 1);
           router.push("/video");
         })
@@ -483,6 +500,23 @@ export default new Vuex.Store({
       })
         .then((res) => {
           commit("SEARCH_REVIEW_VIDEOID", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    searchOneRM: function ({ commit }, searchOneRMInput) {
+      const API_URL = `http://localhost:9999/userapi/recommend/searchOneRM`;
+      axios({
+        url: API_URL,
+        method: "POST",
+        data: searchOneRMInput,
+      })
+        .then((res) => {
+          console.log(res.data);
+          commit("SEARCH_ONE_RM", res.data);
+          alert("계산 완료되었습니다!")
+          router.push("/recommend")
         })
         .catch((err) => {
           console.log(err);
