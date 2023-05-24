@@ -1,57 +1,65 @@
 <template>
   <div class="container">
     <div class="text-center">
-      <input
-        class="view"
-        type="text"
-        v-model="search"
-        placeholder="이름을 입력하세요."
-        v-on:keyup.enter="searchReview"
-      />
-      <button type="button" class="btn btn-warning btn-lg" v-on:click="searchReview">검색</button>
+      <div class="input-group rounded">
+        <input 
+          type="text" 
+          class="form-control" 
+          placeholder="운동영상 아이디로 검색하세요." 
+          aria-label="Search"
+          v-model="search" 
+          aria-describedby="search-addon" 
+          v-on:keyup.enter="searchReview"/>
+        <button class="input-group-text border-0" id="search-addon" v-on:click="searchReview" >
+          검색
+        </button>
+      </div>
     </div>
-
-    <br />
-    <hr />
+    
     <div>
-      <h2>검색 결과</h2>
       <div v-if="searchReviewCnt">
-        <table class="review-list">
+        <br>
+        <h2>검색 결과</h2>
+        <table class="table text-center">
           <colgroup>
             <col style="width: 5%" />
-            <col style="width: 20%" />
-            <col style="width: 20%" />
-            <col style="width: 20%" />
+            <col style="width: 10%" />
             <col style="width: 15%" />
-            <col style="width: 20%" />
+            <col style="width: 30%" />
+            <col style="width: 30%" />
+            <col style="width: 5%" />
           </colgroup>
-          <thead>
+          <thead class="thead-dark">
             <tr>
               <th>번호</th>
-              <th>아이디</th>
               <th>작성자 아이디</th>
               <th>운동영상 아이디</th>
               <th>제목</th>
               <th>내용</th>
+              <th>비고</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(review, index) in searchReviews" :key="index">
               <td>{{ index + 1 }}</td>
-              <td>
-                <router-link class="review-link" :to="`/review/${review.id}`">{{
-                  review.id
-                }}</router-link>
-              </td>
               <td>{{ review.userid }}</td>
               <td>{{ review.videoid }}</td>
               <td>{{ review.title }}</td>
               <td>{{ review.content }}</td>
+              <td>
+              <router-link class="review-link" :to="`/review/${review.id}`">
+                <button class="btn" style="width:90px; background-color:gold;">수정하기</button>
+              </router-link>
+            </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div v-else>검색 결과가 없습니다.</div>
+      <div v-else-if="this.fl">
+        <br>
+        <h2>검색 결과</h2>
+        검색 결과가 없습니다.
+      </div>
     </div>
     <br />
   </div>
@@ -63,11 +71,19 @@ export default {
   data() {
     return {
       search: "",
+      fl:false,
     };
   },
   methods: {
     searchReview() {
-      this.$store.dispatch("searchReviewVideoid", this.search);
+      if(this.search==="") {
+        alert("운동영상 아이디를 입력해주세요.");
+        return;
+      }
+      else {
+        this.$store.dispatch("searchReviewVideoid", this.search);
+        this.fl=true;
+      }
     },
   },
   computed: {

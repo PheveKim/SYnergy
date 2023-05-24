@@ -1,38 +1,45 @@
 <template>
   <div class="container">
-    <h2>리뷰 목록</h2>
-    <h4>등록된 리뷰 수 : {{ reviewCnt }}</h4>
+    <br>
+    <font style="font-weight:bold; font-size:30px;">리뷰 검색</font><br>
+    <review-search style="margin-top:20px;"></review-search>
+    <hr>
+    <br>
+    <font style="font-weight:bold; font-size:30px;">리뷰 목록</font><br>
+    <h4>등록된 리뷰 수 : {{ reviewCnt }}개</h4><br>
     <div v-if="reviewCnt">
-      <table class="review-list">
+      <table class="table text-center">
         <colgroup>
           <col style="width: 5%" />
-          <col style="width: 5%" />
-          <col style="width: 10%" />
           <col style="width: 10%" />
           <col style="width: 15%" />
+          <col style="width: 30%" />
+          <col style="width: 30%" />
+          <col style="width: 5%" />
         </colgroup>
-        <thead>
+        <thead class="table-dark">
           <tr>
             <th>번호</th>
-            <th>아이디</th>
             <th>작성자 아이디</th>
             <th>운동영상 아이디</th>
             <th>제목</th>
             <th>내용</th>
+            <th>비고</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(review, index) in reviews" :key="index">
             <td>{{ index + 1 }}</td>
-            <td>
-              <router-link class="review-link" :to="`/review/${review.id}`">{{
-                review.id
-              }}</router-link>
-            </td>
             <td>{{ review.userid }}</td>
             <td>{{ review.videoid }}</td>
             <td>{{ review.title }}</td>
             <td>{{ review.content }}</td>
+            <td>
+              <router-link class="review-link" :to="`/review/${review.id}`" v-if="loginUser.id === 'admin'">
+                <button class="btn" style="width:90px; background-color:gold;">수정하기</button>
+              </router-link>
+              <button class="btn" style="width:90px; background-color:silver;" v-else-if="loginUser.id != 'admin'">수정하기</button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -42,15 +49,20 @@
 </template>
 <script>
 import { mapState, mapGetters } from "vuex";
+import ReviewSearch from "@/components/review/ReviewSearch.vue";
 export default {
   name: "ReviewList",
   methods: {},
   computed: {
     ...mapState(["reviews"]),
+    ...mapState(["loginUser"]),
     ...mapGetters(["reviewCnt"]),
   },
   created() {
    this.$store.dispatch("setReviews");
   },
+  components: {
+    ReviewSearch,
+  }
 };
 </script>

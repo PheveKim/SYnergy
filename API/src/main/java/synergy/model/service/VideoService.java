@@ -13,6 +13,7 @@ public interface VideoService {
 	
 	int update(Video video);
 	
+	
 	Video searchById(String id);
 	
 	List<Video> selectAll();

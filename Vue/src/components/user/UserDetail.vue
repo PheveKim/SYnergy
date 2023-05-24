@@ -44,7 +44,7 @@
                 </div>
 
                 <br>
-                <p style="text-align: center; margin-top:10px; margin-bottom:10px;"><font style="background-color:#e1e1e1; padding:5px; padding-right:10px; padding-left:10px; border-radius:5px;">계정 정보를 수정하세요</font></p>
+                <p style="text-align: center; margin-top:10px; margin-bottom:10px;"><font style="background-color:#eee; padding:5px; padding-right:10px; padding-left:10px; border-radius:5px;">계정 정보를 수정하세요</font></p>
                 <br>
 
                 <fieldset class="text-center">
@@ -70,7 +70,7 @@
                   <label for="age">나이</label>
                   <input type="number" id="age" v-model="user.age" class="view" /><br /><br>
                   <button class="btn btn-primary btn-block fa-lg gradient-custom-2 btn-lg" style="width:150px;" type="button" @click="updateUser">수정</button>
-                  <button class="btn btn-outline-danger btn-block fa-lg gradient-custom-2 btn-lg" style="width:150px;" type="button" @click="deleteUser">삭제</button>
+                  <button class="btn btn-outline-danger btn-block fa-lg gradient-custom-2 btn-lg" style="width:150px;" type="button" @click="deleteUser">탈퇴</button>
                 </fieldset>
 
 

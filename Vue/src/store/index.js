@@ -19,6 +19,8 @@ export default new Vuex.Store({
     searchReviews: [],
     review: {},
     searchOneRMOutput: {},
+    searchRoutineOutput: {},
+    searchFoodOutput: {},
   },
   getters: {
     userCnt: function (state) {
@@ -109,6 +111,12 @@ export default new Vuex.Store({
     },
     SEARCH_ONE_RM: function (state, searchOneRMOutput) {
       state.searchOneRMOutput = searchOneRMOutput;
+    },
+    SEARCH_ROUTINE: function (state, searchRoutineOutput) {
+      state.searchRoutineOutput = searchRoutineOutput;
+    },
+    SEARCH_FOOD: function (state, searchFoodOutput) {
+      state.searchFoodOutput = searchFoodOutput;
     }
   },
   actions: {
@@ -330,6 +338,7 @@ export default new Vuex.Store({
     updateVideo: function ({commit}, video) {
       console.log(commit);
       const API_URL = `http://localhost:9999/userapi/video`;
+      
       axios({
         url: API_URL,
         method: "PUT",
@@ -343,6 +352,29 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
+    // 좋아요 버튼--------------------------------------------------
+  
+    addLike: function ({commit}, video) {
+      commit;
+      console.log(video.videolike);
+      const API_URL = `http://localhost:9999/userapi/video/${video.id}`;
+      axios({
+        url: API_URL,
+        method: "PUT",
+        data: video,
+      })
+        .then(() => {
+          alert("좋아요!");
+          router.go(0);
+          
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+
+    //-------------------------------------------------------------
     deleteVideo: function ({ state }, id) {
       const API_URL = `http://localhost:9999/userapi/video/${id}`;
       axios({
@@ -505,17 +537,34 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    searchOneRM: function ({ commit }, searchOneRMInput) {
-      const API_URL = `http://localhost:9999/userapi/recommend/searchOneRM`;
+    searchRoutine: function ({ commit }, searchRoutineInput) {
+      const API_URL = `http://localhost:9999/userapi/recommend/searchRoutine`;
       axios({
         url: API_URL,
         method: "POST",
-        data: searchOneRMInput,
+        data: searchRoutineInput,
       })
         .then((res) => {
           console.log(res.data);
-          commit("SEARCH_ONE_RM", res.data);
-          alert("계산 완료되었습니다!")
+          commit("SEARCH_ROUTINE", res.data);
+          alert("운동루틴 계산 완료되었습니다!")
+          router.push("/recommend")
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    searchFood: function ({ commit }, searchFoodInput) {
+      const API_URL = `http://localhost:9999/userapi/recommend/searchFood`;
+      axios({
+        url: API_URL,
+        method: "POST",
+        data: searchFoodInput,
+      })
+        .then((res) => {
+          console.log(res.data);
+          commit("SEARCH_FOOD", res.data);
+          alert("식단 계산 완료되었습니다!")
           router.push("/recommend")
         })
         .catch((err) => {

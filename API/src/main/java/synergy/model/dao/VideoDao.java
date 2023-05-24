@@ -12,6 +12,7 @@ public interface VideoDao {
 	
 	int update(Video video);
 	
+	
 	Video searchById(String id);
 	
 	List<Video> selectAll();

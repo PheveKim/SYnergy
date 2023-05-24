@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <br>
     <h2>리뷰 정보</h2>
     <fieldset class="text-center">
       <label for="id">아이디</label>
@@ -31,8 +32,8 @@
       <input type="text" id="title" v-model="review.title" class="view" /><br />
       <label for="content">내용</label>
       <input type="text" id="content" v-model="review.content" class="view" /><br />
-      <button class="btn" @click="updateReview">수정</button>
-      <button class="btn" @click="deleteReview">삭제</button>
+      <button class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" @click="updateReview">수정</button>
+      <button class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" @click="deleteReview">삭제</button>
     </fieldset>
   </div>
 </template>

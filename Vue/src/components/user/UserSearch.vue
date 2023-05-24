@@ -20,7 +20,7 @@
       <div v-if="searchUserCnt">
         <div v-if="loginUser.id == 'admin'">
           <h2>검색 결과</h2>
-          <table class="user-list">
+          <table class="table">
             <colgroup>
               <col style="width: 5%" />
               <col style="width: 40%" />
@@ -28,7 +28,7 @@
               <col style="width: 20%" />
               <col style="width: 15%" />
             </colgroup>
-            <thead>
+            <thead class="thead-dark">
               <tr>
                 <th>번호</th>
                 <th>아이디</th>
@@ -55,13 +55,13 @@
         </div>
         <div v-else-if="loginUser.id != 'admin'">
           <h2>검색 결과</h2>
-          <table class="user-list">
+          <table class="table">
             <colgroup>
               <col style="width: 10%" />
               <col style="width: 45%" />
               <col style="width: 45%" />
             </colgroup>
-            <thead>
+            <thead class="thead-dark">
               <tr>
                 <th>번호</th>
                 <th>아이디</th>
@@ -72,9 +72,10 @@
               <tr v-for="(user, index) in searchUsers" :key="index">
                 <td>{{ index + 1 }}</td>
                 <td>
-                  <router-link class="user-link" :to="`/user/${user.id}`">{{
-                    user.id
-                  }}</router-link>
+                  <router-link class="user-link" :to="`/user/${user.id}`" style="text-decoration-line: none;" v-if="loginUser.id === `${user.id}`">
+                  {{ user.id }}
+                  </router-link>
+                  <font v-else>{{ user.id }}</font>
                 </td>
                 <td>{{ user.name }}</td>
               </tr>

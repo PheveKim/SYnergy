@@ -11,12 +11,13 @@ public class Video {
 	private String youtubeurl; // 유튜브링크
 	private String channelname; // 채널명
 	private int viewcnt; // 조회수
+	private int videolike;// 좋아요
 	public Video() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Video(String id, String title, String content, String fitpartname, String youtubeurl, String channelname,
-			int viewcnt) {
+			int viewcnt, int videolike) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -25,6 +26,7 @@ public class Video {
 		this.youtubeurl = youtubeurl;
 		this.channelname = channelname;
 		this.viewcnt = viewcnt;
+		this.videolike = videolike;
 	}
 	public String getId() {
 		return id;
@@ -68,10 +70,17 @@ public class Video {
 	public void setViewcnt(int viewcnt) {
 		this.viewcnt = viewcnt;
 	}
+	public int getVideolike() {
+		return videolike;
+	}
+	public void setLike(int like) {
+		this.videolike = like;
+	}
 	@Override
 	public String toString() {
 		return "Video [id=" + id + ", title=" + title + ", content=" + content + ", fitpartname=" + fitpartname
-				+ ", youtubeurl=" + youtubeurl + ", channelname=" + channelname + ", viewcnt=" + viewcnt + "]";
+				+ ", youtubeurl=" + youtubeurl + ", channelname=" + channelname + ", viewcnt=" + viewcnt + ", like="
+				+ videolike + "]";
 	}
 
 	

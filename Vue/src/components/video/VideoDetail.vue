@@ -23,7 +23,8 @@
           <div class="col-8">
             <a style="font-weight:; font-size:18px; color:blue;" :href="`https://www.youtube.com/watch?v=${video.youtubeurl}`">Youtube 바로가기</a><br>
             <font style="font-weight:bold; font-size:18px;">운동부위 : {{ video.fitpartname }}</font><br>
-            <font style="font-weight:bold; font-size:18px;">{{ video.content }}</font>
+            <font style="font-weight:bold; font-size:18px;">{{ video.content }} </font>
+            <div ><button type= "button" class="Like btn btn-danger" style ="font-weight: bold; width: fit-content;" @click="clickLike" >좋아요 {{ video.videolike }}</button></div>
           </div>
           <div class="col-4" style="text-align:right;" v-if="loginUser != null && loginUser.id === 'admin'">
             <button class="btn btn-lg" style="width:150px; background-color:greenyellow;" type="button" data-toggle="collapse" data-target="#collapseVideoDetail" aria-expanded="false" aria-controls="collapseVideoDetail">
@@ -55,6 +56,7 @@
               <input type="text" id="youtubeurl" v-model="video.youtubeurl" class="view" /><br />
               <label for="channelname">채널 이름</label>
               <input type="text" id="channelname" v-model="video.channelname" class="view" /><br />
+              
               <button class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" @click="updateVideo">수정</button>
               <button class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" @click="deleteVideo">삭제</button>
             </fieldset>
@@ -110,11 +112,38 @@
     
   </div>
 </template>
+<style>
+  .heart {
+    width: 500px;
+    height: 500px;
+    background: #ea2027;
+    position: relative;
+    transform: rotate(45deg);
+  }
+  .heart::before,
+  .heart::after {
+    content: "";
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    border-radius: 50%;
+    background: #ea2027;
+  }
+  .heart::before {
+    left: -50%;
+  }
+  .heart::after {
+    top: -50%;
+  }
+</style>
 <script>
 import { mapState, mapGetters } from "vuex";
 export default {
   name: "VideoDetail",
   methods: {
+    clickLike(){
+      this.$store.dispatch("addLike",this.video);
+    },
     updateVideo() {
       this.$store.dispatch("updateVideo", this.video);
     },

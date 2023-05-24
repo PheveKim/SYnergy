@@ -1,11 +1,11 @@
 <template>
   <div class="container" style="margin-top:20px;">
-    <h2>회원 검색</h2>
+    <font style="font-weight:bold; font-size:30px;">회원 검색</font><br>
     <user-search style="margin-top:20px;"></user-search>
     <hr>
     <br>
-    <h2>회원 목록</h2>
-    <h4>등록된 회원 수 : {{ userCnt }}</h4>
+    <font style="font-weight:bold; font-size:30px;">회원 목록</font>
+    <h4>등록된 회원 수 : {{ userCnt }}명</h4><br>
     <div v-if="userCnt">
       <div v-if="loginUser.id == 'admin'">
         <table class="table text-center">

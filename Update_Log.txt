@@ -135,4 +135,19 @@ ReviewSearch (ReviewSearchVieoid 로 videoid 로 검색해서 해당 video 에 �
 2023.05.24(수)
 1. JWT 연결 User 객체 전부가 아닌 Id, Name만 전달하도록 구현
 2. 1번에 따른 유저 정보 수정, 정보 삭제 등의 기능 수정
-
+<<<<<<< HEAD
+3. Epley, Brzycki, McGlothin 공식 평균내줘
+=======
+3. 영상 상세 정보 좋아요 버튼 생성 및 db 연결
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> e0bd7d32795748ac9a5c4bb61c585502403ac030
+=======
+..
+>>>>>>> 1db5ad611638bd2893ebb5069dcd7a8a3233fbda
+=======
+4. 운동 부위에 따른 표시 영상 구분
+>>>>>>> d38e22ae30fe6497264935c25305d3e557b702ba
+5. Bard AI 운동 루틴 추천 구현
+6. Bard AI 운동 식단 추천 구현
+7. 운동리뷰 수정.

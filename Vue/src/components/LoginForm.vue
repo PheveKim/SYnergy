@@ -17,7 +17,7 @@
                 <br>
 
                 <form style="text-align: center;">
-                  <p style="text-align: center; margin-top:10px; margin-bottom:10px;"><font style="background-color:#e1e1e1; padding:5px; padding-right:10px; padding-left:10px; border-radius:5px;">계정 정보를 입력하세요</font></p>
+                  <p style="text-align: center; margin-top:10px; margin-bottom:10px;"><font style="background-color:#eee; padding:5px; padding-right:10px; padding-left:10px; border-radius:5px;">계정 정보를 입력하세요</font></p>
                   <br>
 
                   <div class="form-outline mb-4">

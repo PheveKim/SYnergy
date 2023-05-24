@@ -1,9 +1,10 @@
 <template>
   <div class="container">
+    <br>
     <video-search></video-search>
     <div class="row">
       <div class="col">
-        <font style="font-weight:bold; font-size:30px;">운동 영상 목록 ({{ videoCnt }})</font>
+        <font style="font-weight:bold; font-size:30px;">운동 영상 목록</font>
       </div> 
       <div class="col" style="text-align:right;" >
         <router-link :to="{ name: 'VideoRegist' }"  v-if="loginUser">
@@ -14,24 +15,44 @@
       </div>
       <!-- Example single danger button -->
       <div class="btn-group" style="width:200px;">
-        <button type="button" class="btn btn-danger dropdown-toggle btn-lg" style="font-weight:bold;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          운동 부위
+        <button type="button" class="btn btn-danger dropdown-toggle btn-lg" style="font-weight:bold;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" :part="part">
+          {{ part }}
         </button>
         <div class="dropdown-menu ">
-          <a class="dropdown-item" href="#">등</a>
-          <a class="dropdown-item" href="#">가슴</a>
-          <a class="dropdown-item" href="#">하체</a>
-          <a class="dropdown-item" href="#">어깨</a>
-          <a class="dropdown-item" href="#">복근</a>
+          <a class="dropdown-item" @click="part='등'">등</a>
+          <a class="dropdown-item"  @click="part='가슴'">가슴</a>
+          <a class="dropdown-item"  @click="part='하체'">하체</a>
+          <a class="dropdown-item"  @click="part='어깨'">어깨</a>
+          <a class="dropdown-item"  @click="part='팔'">팔</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">기타</a> 
+          <a class="dropdown-item"  @click="part='전신'">전신</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item"  @click="part='운동부위'">전체</a>
         </div>
       </div>
     </div>
     <div v-if="videoCnt">
-
       <div class="row">
-        <div class="col" v-for="(video, index) in videos" :key="index">
+        <div class="col" v-for="(video, index) in videos" :key="index" >
+          <div v-if="video.fitpartname===part"  >
+          
+          <div  style="border-radius:100px; margin-top:20px; margin-bottom:5px;">
+            <iframe
+              style="border-radius:15px;"
+              width="400" 
+              height="250" :src="`https://www.youtube.com/embed/${ video.youtubeurl }`"
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen>
+            </iframe>
+          
+          <router-link class="video-link" :to="`/video/${video.id}`" style="text-decoration-line: none;">
+            <div><font style="font-weight:bold; font-size:25px; ">{{ video.title.substring(0,20) }}</font></div>
+            <div><font style="font-weight:; font-size:15px; color:black;">{{ video.content.substring(0, 30) }}</font></div>
+          </router-link>
+        </div>
+        </div>
+        <div v-else-if="part==='운동부위'">
           <div style="border-radius:100px; margin-top:20px; margin-bottom:5px;">
             <iframe
               style="border-radius:15px;"
@@ -46,6 +67,7 @@
             <div><font style="font-weight:bold; font-size:25px; ">{{ video.title.substring(0,20) }}</font></div>
             <div><font style="font-weight:; font-size:15px; color:black;">{{ video.content.substring(0, 30) }}</font></div>
           </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -57,7 +79,16 @@ import { mapState, mapGetters } from "vuex";
 import VideoSearch from "@/components/video/VideoSearch.vue";
 export default {
   name: "VideoList",
-  methods: {},
+  data(){
+    return{
+      part:"운동부위",
+      cnt:0,
+    }
+  },
+  methods: {
+    
+  },
+  
   computed: {
     ...mapState(["videos"]),
     ...mapGetters(["videoCnt"]),
@@ -70,6 +101,12 @@ export default {
     VideoSearch,
   }
 };
+// $(document).on("click", ".Like", function () {
+//     let like = $(this).data('id');
+//     let video = this.videos[D];
+//     console.log(video);
+     
+// });
 </script>
 <style>
 header {

@@ -183,6 +183,18 @@ public class VideoRestController {
 			return exceptionHandling(e);
 		}
 	}
+	@PutMapping("/video/{id}")
+	@ApiOperation(value = "비디오 좋아요 정보를 수정한다.", response = Integer.class)
+	public ResponseEntity<?> updateLike(@RequestBody Video video) {
+		video.setLike(video.getVideolike()+1);
+		try {
+			int result = vs.update(video);
+			return new ResponseEntity<Integer>(result, HttpStatus.OK);
+
+		} catch (Exception e) {
+			return exceptionHandling(e);
+		}
+	}
 
 	@DeleteMapping("/video/{id}")
 	@ApiOperation(value = "{id} 에 해당하는 비디오 정보를 삭제한다.", response = Integer.class)
