@@ -37,7 +37,7 @@ public class RecommendRestController {
 			
 			
 			query += "몸무게는 " + routine.getPerson_weight() + "kg, ";
-			query += "키는 " + routine.getPerson_height() + "cm 입니다. 이것을 바탕으로 BMI 를 계산해주세요.";
+			query += "키는 " + routine.getPerson_height() + "cm 입니다. 이것을 바탕으로 BMI 를 계산해주세요. 그리고";
 			query += "벤치프레스의 1RM 은 " + routine.getB() + "kg, ";
 			query += "데드리프트의 1RM 은 : " + routine.getD() + "kg, ";
 			query += "스쿼트는의 1RM 은 " + routine.getS() + "kg 입니다. 이 세가지 1RM 무게를 바탕으로 운동루틴을 2분할로 무게와 횟수를 꼭 포함시켜서 추천해주세요. 그 다음으로 운동루틴을 3분할로 무게와 횟수를 꼭 포함시켜서 추천해주세요. 무게는 kg을 꼭 명시해줘야합니다. 예를 들어 80kg으로 10회 반복해라는 식으로";

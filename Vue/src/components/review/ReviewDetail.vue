@@ -1,9 +1,9 @@
 <template>
-  <div class="container">
+  <div class="container" style="font-family: 'Cyber';">
     <br>
-    <h2>리뷰 정보</h2>
+    <h2>REVIEW DETAIL</h2>
     <fieldset class="text-center">
-      <label for="id">아이디</label>
+      <label for="id">ID</label>
       <input
         readonly
         type="text"
@@ -11,7 +11,7 @@
         v-model="review.id"
         class="view"
       /><br />
-      <label for="id">작성자 아이디</label>
+      <label for="id">USER ID</label>
       <input
         readonly
         type="text"
@@ -19,7 +19,7 @@
         v-model="review.userid"
         class="view"
       /><br />
-      <label for="id">운동영상 아이디</label>
+      <label for="id">VIDEO ID</label>
       <input
         readonly
         type="text"
@@ -28,12 +28,12 @@
         class="view"
       /><br />
 
-      <label for="title">제목</label>
+      <label for="title">TITLE</label>
       <input type="text" id="title" v-model="review.title" class="view" /><br />
-      <label for="content">내용</label>
+      <label for="content">CONTENT</label>
       <input type="text" id="content" v-model="review.content" class="view" /><br />
-      <button class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" @click="updateReview">수정</button>
-      <button class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" @click="deleteReview">삭제</button>
+      <button class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" @click="updateReview">EDIT</button>
+      <button class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" @click="deleteReview">DELETE</button>
     </fieldset>
   </div>
 </template>

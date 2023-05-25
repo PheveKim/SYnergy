@@ -29,7 +29,7 @@
 
 
 
-    <section class="gradient-form" style="background-color: #eee;">
+    <section class="gradient-form" style="background-color: #eee; height:900px;">
       <br>
       <div class="container py-5" style="height:auto;">
         <div class="row d-flex justify-content-center align-items-center">
@@ -37,18 +37,17 @@
             <div class="card rounded-3 text-black">
               <div class="card-body p-md-5 mx-md-4">
 
-                <div class="text-center">
+                <!-- <div class="text-center">
                   <img src="@/assets/logo2.jpg"
                     style="width: 185px; border-radius: 15%;" alt="logo">
-                  <!-- <h4 class="mt-1 mb-5 pb-1">We are SYnergy</h4> -->
-                </div>
+                </div> -->
 
                 <br>
-                <p style="text-align: center; margin-top:10px; margin-bottom:10px;"><font style="background-color:#eee; padding:5px; padding-right:10px; padding-left:10px; border-radius:5px;">계정 정보를 수정하세요</font></p>
+                <p style="text-align: center; margin-top:10px; margin-bottom:10px;"><font style="background-color:#eee; padding:5px; padding-right:10px; padding-left:10px; border-radius:5px; font-size:20px; font-family: 'Cyber';">EDIT PROFILE</font></p>
                 <br>
 
-                <fieldset class="text-center">
-                  <label for="id">아이디</label>
+                <fieldset class="text-center" style="font-family: 'Cyber';">
+                  <label for="id">ID</label>
                   <input
                     readonly
                     type="text"
@@ -56,21 +55,21 @@
                     v-model="user.id"
                     class="view"
                   /><br />
-                  <label for="password">비밀번호</label>
+                  <label for="password">PASSWORD</label>
                   <input
                     type="password"
                     id="password"
                     v-model="user.password"
                     class="view"
                   /><br />
-                  <label for="name">이름</label>
+                  <label for="name">NAME</label>
                   <input type="text" id="name" v-model="user.name" class="view" /><br />
-                  <label for="email">이메일</label>
+                  <label for="email">EMAIL</label>
                   <input type="email" id="email" v-model="user.email" class="view" /><br />
-                  <label for="age">나이</label>
+                  <label for="age">AGE</label>
                   <input type="number" id="age" v-model="user.age" class="view" /><br /><br>
-                  <button class="btn btn-primary btn-block fa-lg gradient-custom-2 btn-lg" style="width:150px;" type="button" @click="updateUser">수정</button>
-                  <button class="btn btn-outline-danger btn-block fa-lg gradient-custom-2 btn-lg" style="width:150px;" type="button" @click="deleteUser">탈퇴</button>
+                  <button class="btn btn-primary btn-block fa-lg gradient-custom-2 btn-lg" style="width:150px; border-radius:5px;" type="button" @click="updateUser">EDIT</button>
+                  <button class="btn btn-outline-danger btn-block fa-lg gradient-custom-2 btn-lg" style="width:150px; border-radius:5px;" type="button" @click="deleteUser">DELETE</button>
                 </fieldset>
 
 

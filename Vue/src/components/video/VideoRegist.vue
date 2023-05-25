@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <br>
-    <font style="font-weight:bold; font-size:30px;">영상 등록</font><br>
+    <font style="font-weight:bold; font-size:30px; font-family: 'Cyber';">VIDEO REGIST</font><br>
     <fieldset class="text-center">
-      <label for="youtubeurl">유튜브 URL : </label>
+      <label for="youtubeurl" style="font-family: 'Cyber';">YOUTUBE URL : </label>
       <input type="text" id="youtubeurl" v-model="youtubeurl" class="view" /><br />
-      <button type="button" class="btn btn-lg btn-primary" onClick="this.disabled=true; this.value='Sending…';" @click="regist">등록</button>
+      <button style="font-family: 'Cyber'; border-radius:5px; " type="button" class="btn btn-lg btn-primary" onClick="this.disabled=true; this.value='Sending…';" @click="regist">REGIST</button>
     </fieldset>
   </div>
 </template>

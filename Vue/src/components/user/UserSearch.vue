@@ -1,17 +1,17 @@
 <template>
-  <div class="container">
+  <div class="container" style="font-family: 'Cyber';">
     <div class="text-center">
-      <div class="input-group rounded">
+      <div class="input-group rounded" style="font-family: 'Cyber';">
         <input 
           type="text" 
           class="form-control" 
-          placeholder="이름을 검색하세요." 
+          placeholder="USER NAME" 
           aria-label="Search"
           v-model="search" 
           aria-describedby="search-addon" 
           v-on:keyup.enter="searchUser"/>
         <button class="input-group-text border-0" id="search-addon" v-on:click="searchUser" >
-          검색
+          <font style="font-family: 'Cyber';">SEARCH</font>
         </button>
       </div>
     </div>
@@ -19,7 +19,7 @@
     <div>
       <div v-if="searchUserCnt">
         <div v-if="loginUser.id == 'admin'">
-          <h2>검색 결과</h2>
+          <h2 style="font-family: 'Cyber';">RESULTS</h2>
           <table class="table">
             <colgroup>
               <col style="width: 5%" />
@@ -54,7 +54,7 @@
           </table>
         </div>
         <div v-else-if="loginUser.id != 'admin'">
-          <h2>검색 결과</h2>
+          <h2 style="font-family: 'Cyber';">RESULTS</h2>
           <table class="table">
             <colgroup>
               <col style="width: 10%" />
@@ -84,8 +84,8 @@
         </div>
       </div>
       <div v-else-if="this.fl">
-        <h2>검색 결과</h2>
-        검색 결과가 없습니다.
+        <h2 style="font-family: 'Cyber';">RESULTS</h2>
+        No Results
       </div>
     </div>
   </div>

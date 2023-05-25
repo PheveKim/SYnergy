@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="bg" id="app">
     <header-nav />
     <router-view />
   </div>
@@ -16,7 +16,7 @@ export default {
       // console.log("to:", to, "from:", from);
       this.$store.commit("RESET_STATE");
     }
-}
+  }
 };
 </script>
 <style>

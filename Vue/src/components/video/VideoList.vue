@@ -2,45 +2,59 @@
   <div class="container">
     <br>
     <video-search></video-search>
-    <div class="row">
+    <div class="row" style="margin-bottom:20px;">
       <div class="col">
-        <font style="font-weight:bold; font-size:30px;">운동 영상 목록</font>
+        <font style="font-family: 'Cyber'; font-weight:bold; font-size:40px;">VIDEOS</font>
       </div> 
       <div class="col" style="text-align:right;" >
         <router-link :to="{ name: 'VideoRegist' }"  v-if="loginUser">
-          <button class="btn btn-lg" style="width:120px; background-color:greenyellow; font-weight:bold;">
-            영상등록
+          <button class="btn btn-primary btn-lg" style="font-family: 'Cyber'; font-size:20px; border-radius:5px; width:120px;">
+            REGIST
           </button>
         </router-link>
       </div>
       <!-- Example single danger button -->
       <div class="btn-group" style="width:200px;">
-        <button type="button" class="btn btn-danger dropdown-toggle btn-lg" style="font-weight:bold;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" :part="part">
-          {{ part }}
+        <button type="button" class="btn btn-danger dropdown-toggle btn-lg" style="font-family: 'Cyber'; font-size:20px; border-radius:5px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" :part="part">
+          <!-- {{ part }} -->
+      
+          <font v-if="part === '등'">BACK</font>
+          <font v-else-if="part === '가슴'">CHEST</font>
+          <font v-else-if="part === '하체'">LEG</font>
+          <font v-else-if="part === '어깨'">SHOULDER</font>
+          <font v-else-if="part === '팔'">ARM</font>
+          <font v-else-if="part === '전신'">BODY</font>
+          <font v-else>ALL</font>
         </button>
-        <div class="dropdown-menu ">
-          <a class="dropdown-item" @click="part='등'">등</a>
-          <a class="dropdown-item"  @click="part='가슴'">가슴</a>
-          <a class="dropdown-item"  @click="part='하체'">하체</a>
-          <a class="dropdown-item"  @click="part='어깨'">어깨</a>
-          <a class="dropdown-item"  @click="part='팔'">팔</a>
+        <div class="dropdown-menu" style="font-family: 'Cyber';">
+          <a class="dropdown-item" @click="part='등'">BACK</a>
+          <a class="dropdown-item"  @click="part='가슴'">CHEST</a>
+          <a class="dropdown-item"  @click="part='하체'">LEG</a>
+          <a class="dropdown-item"  @click="part='어깨'">SHOULDER</a>
+          <a class="dropdown-item"  @click="part='팔'">ARM</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item"  @click="part='전신'">전신</a>
+          <a class="dropdown-item"  @click="part='전신'">BODY</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item"  @click="part='운동부위'">전체</a>
+          <a class="dropdown-item"  @click="part='ALL'">ALL</a>
         </div>
       </div>
     </div>
     <div v-if="videoCnt">
-      <div class="row">
-        <div class="col" v-for="(video, index) in videos" :key="index" >
-          <div v-if="video.fitpartname===part"  >
+    <div class="row">
+      <b-row align-v="center" align-h="center">
+        <b-pagination v-model="currentPage"
+          :total-rows="this.videos.length"
+          :per-page="perPage">
+        </b-pagination>
+      
           
+      <div class="col" v-for="(video, index) in paginatedBoardList" :key="index" >
+        <div v-if="video.fitpartname===part"  >
           <div  style="border-radius:100px; margin-top:20px; margin-bottom:5px;">
             <iframe
               style="border-radius:15px;"
               width="400" 
-              height="250" :src="`https://www.youtube.com/embed/${ video.youtubeurl }`"
+              height="220" :src="`https://www.youtube.com/embed/${ video.youtubeurl }`"
               frameborder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
               allowfullscreen>
@@ -52,12 +66,12 @@
           </router-link>
         </div>
         </div>
-        <div v-else-if="part==='운동부위'">
+        <div v-else-if="part==='ALL'">
           <div style="border-radius:100px; margin-top:20px; margin-bottom:5px;">
             <iframe
               style="border-radius:15px;"
               width="400" 
-              height="250" :src="`https://www.youtube.com/embed/${ video.youtubeurl }`"
+              height="220" :src="`https://www.youtube.com/embed/${ video.youtubeurl }`"
               frameborder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
               allowfullscreen>
@@ -69,6 +83,7 @@
           </router-link>
           </div>
         </div>
+        </b-row>
       </div>
     </div>
     <div v-else>등록된 영상이 없습니다.</div>
@@ -81,18 +96,34 @@ export default {
   name: "VideoList",
   data(){
     return{
-      part:"운동부위",
-      cnt:0,
+      part:"ALL",
+      perPage: 6,
+      currentPage:1,
     }
   },
   methods: {
     
   },
   
-  computed: {
+  computed: { 
     ...mapState(["videos"]),
     ...mapGetters(["videoCnt"]),
-    ...mapState(["loginUser"]),
+    ...mapState(["loginUser"]), 
+    paginatedBoardList() {
+        const start = (this.currentPage - 1) * this.perPage;
+        const end = start + this.perPage;
+        // let list=[];
+        // for(let video in this.videos){
+        //   if(video.fitpartname===this.part){
+        //     list.push(video);
+        //   }
+        // }
+        // console.log(this.part);
+      
+
+        return this.videos.slice(start, end);
+
+      },
   },
   created() {
    this.$store.dispatch("setVideos");

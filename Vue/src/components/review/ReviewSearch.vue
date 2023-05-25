@@ -1,17 +1,17 @@
 <template>
-  <div class="container">
+  <div class="container" style="font-family: 'Cyber';">
     <div class="text-center">
-      <div class="input-group rounded">
+      <div class="input-group rounded" style="font-family: 'Cyber';">
         <input 
           type="text" 
           class="form-control" 
-          placeholder="운동영상 아이디로 검색하세요." 
+          placeholder="VIDEO ID" 
           aria-label="Search"
           v-model="search" 
           aria-describedby="search-addon" 
           v-on:keyup.enter="searchReview"/>
         <button class="input-group-text border-0" id="search-addon" v-on:click="searchReview" >
-          검색
+          SEARCH
         </button>
       </div>
     </div>
@@ -19,7 +19,7 @@
     <div>
       <div v-if="searchReviewCnt">
         <br>
-        <h2>검색 결과</h2>
+        <h2 style="font-family: 'Cyber';">RESULTS</h2>
         <table class="table text-center">
           <colgroup>
             <col style="width: 5%" />
@@ -57,8 +57,8 @@
       </div>
       <div v-else-if="this.fl">
         <br>
-        <h2>검색 결과</h2>
-        검색 결과가 없습니다.
+        <h2 style="font-family: 'Cyber';">RESULTS</h2>
+        No results
       </div>
     </div>
     <br />

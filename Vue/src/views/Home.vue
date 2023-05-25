@@ -4,13 +4,13 @@
     <div class="text-center">
       <h1>{{ message }}</h1>
     </div>
-    <video-list></video-list>
+    <first-page></first-page>
   </div>
 </template>
 
 <script>
 // import UserSearch from "@/components/user/UserSearch.vue";
-import VideoList from "@/components/video/VideoList.vue";
+import FirstPage from "@/components/FirstPage.vue";
 
 export default {
   name: "Home",
@@ -20,8 +20,7 @@ export default {
     };
   },
   components: {
-    // UserSearch,
-    VideoList,
+    FirstPage,
   },
 };
 </script>

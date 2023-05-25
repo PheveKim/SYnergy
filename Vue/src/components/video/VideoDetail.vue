@@ -21,24 +21,24 @@
       <div class="card rounded-3" style="background-color:white; margin-top:20px; margin-bottom:10px;">
         <div class="card-body row">
           <div class="col-8">
-            <a style="font-weight:; font-size:18px; color:blue;" :href="`https://www.youtube.com/watch?v=${video.youtubeurl}`">Youtube 바로가기</a><br>
+            <a style="font-weight:; font-size:18px; color:blue; font-family: 'Cyber'; text-decoration-line: none;" :href="`https://www.youtube.com/watch?v=${video.youtubeurl}`">GO TO YOUTUBE</a><br>
             <font style="font-weight:bold; font-size:18px;">운동부위 : {{ video.fitpartname }}</font><br>
             <font style="font-weight:bold; font-size:18px;">{{ video.content }} </font>
-            <div ><button type= "button" class="Like btn btn-danger" style ="font-weight: bold; width: fit-content;" @click="clickLike" >좋아요 {{ video.videolike }}</button></div>
+            <div ><button type= "button" class="Like btn btn-danger" style ="border-radius:3px; font-weight: bold; width: fit-content; font-family: 'Cyber';" @click="clickLike" >LIKE {{ video.videolike }}</button></div>
           </div>
           <div class="col-4" style="text-align:right;" v-if="loginUser != null && loginUser.id === 'admin'">
-            <button class="btn btn-lg" style="width:150px; background-color:greenyellow;" type="button" data-toggle="collapse" data-target="#collapseVideoDetail" aria-expanded="false" aria-controls="collapseVideoDetail">
-              영상수정
+            <button class="btn btn-primary btn-lg" style="width:150px; border-radius:5px; font-family: 'Cyber';" type="button" data-toggle="collapse" data-target="#collapseVideoDetail" aria-expanded="false" aria-controls="collapseVideoDetail">
+              EDIT
             </button>
           </div>
         </div>
       </div>
 
-      <div class="collapse" id="collapseVideoDetail" style="margin-top:15px;">
+      <div class="collapse" id="collapseVideoDetail" style="margin-top:15px; font-family: 'Cyber';">
         <div class="card rounded-3" style="background-color:white; margin-top:20px; margin-bottom:10px;">
           <div class="card-body">
             <fieldset class="text-center">
-              <label for="id">아이디</label>
+              <label for="id">ID</label>
               <input
                 readonly
                 type="text"
@@ -46,19 +46,19 @@
                 v-model="video.id"
                 class="view"
               /><br />
-              <label for="title">제목</label>
+              <label for="title">TITLE</label>
               <input type="text" id="title" v-model="video.title" class="view" /><br />
-              <label for="content">내용</label>
+              <label for="content">CONTENT</label>
               <input type="text" id="content" v-model="video.content" class="view" /><br />
-              <label for="fitpartname">운동 부위</label>
+              <label for="fitpartname">FITPARTNAME</label>
               <input type="text" id="fiatpartname" v-model="video.fitpartname" class="view" /><br />
-              <label for="youtubeurl">url</label>
+              <label for="youtubeurl">URL</label>
               <input type="text" id="youtubeurl" v-model="video.youtubeurl" class="view" /><br />
-              <label for="channelname">채널 이름</label>
+              <label for="channelname">CHANNELNAME</label>
               <input type="text" id="channelname" v-model="video.channelname" class="view" /><br />
               
-              <button class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" @click="updateVideo">수정</button>
-              <button class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" @click="deleteVideo">삭제</button>
+              <button class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" @click="updateVideo">EDIT</button>
+              <button class="btn btn-lg" style="background-color:greenyellow; font-weight:bold;" @click="deleteVideo">DELETE</button>
             </fieldset>
           </div>
         </div>
@@ -66,7 +66,7 @@
 
       <div v-if="searchReviewCnt" style="padding-bottom:20px;">
         <div class="card rounded-3" style="background-color:white; margin-top:20px;">
-          <font class="card-body" style="font-weight:bold; font-size:20px; border-bottom:1px solid #e1e1e1;">리뷰</font>
+          <font class="card-body" style="font-weight:bold; font-size:20px; border-bottom:1px solid #e1e1e1; font-family: 'Cyber'">REVIEWS</font>
           <div class="card-body" v-for="(searchReview, index) in searchReviews" :key="index" style="border-bottom:1px solid #e1e1e1;">
             <div class="row">
               <div class="col-1" style="padding-left:30px; padding-top:5px;">
@@ -84,13 +84,13 @@
       
       <div class="row" style="padding-left:5px; padding-right:20px;" v-if="loginUser != null">
         <button class="btn btn-primary btn-lg" style="width:100%;" type="button" data-toggle="collapse" data-target="#collapseReviewRegist" aria-expanded="false" aria-controls="collapseReviewRegist">
-          리뷰 작성하기
+          <font style="font-family: 'Cyber';">ADD REVIEWS</font>
         </button>
       </div>
       <div class="row" style="padding-left:5px; padding-right:20px;" v-else-if="loginUser == null">
         <router-link to="/login">
           <button class="btn btn-lg" style="width:100%; background-color:black; color:white;" type="text">
-            리뷰를 남기려면 로그인하세요.
+            <font style="font-family: 'Cyber';">PLEASE LOGIN</font>
           </button>
         </router-link>
       </div>
@@ -98,11 +98,11 @@
         <div class="card card-body">
           
           <fieldset class="text-center">
-            <label for="title">제목</label>
+            <label for="title" style="font-family: 'Cyber';">TITLE</label>
             <input type="text" id="title" v-model="title" class="view" /><br />
-            <label for="content">내용</label>
+            <label for="content" style="font-family: 'Cyber';">CONTENT</label>
             <input type="text" id="content" v-model="content" class="view" style="height:300px;"/><br />
-            <button type="button" class="btn btn-lg" style="background-color:greenyellow;" @click="ReviewRegist" onClick="this.disabled=true; this.value='Sending…';">등록</button>
+            <button type="button" class="btn btn-primary btn-lg" style="border-radius:5px; font-family: 'Cyber';" @click="ReviewRegist" onClick="this.disabled=true; this.value='Sending…';">REGIST</button>
           </fieldset>
         
         </div>

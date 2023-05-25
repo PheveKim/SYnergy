@@ -1,12 +1,12 @@
 <template>
-  <div class="container">
+  <div class="container" style="font-family: 'Cyber';">
     <br>
-    <font style="font-weight:bold; font-size:30px;">리뷰 검색</font><br>
+    <font style="font-weight:bold; font-size:25px;">SEARCH REVIEWS</font><br>
     <review-search style="margin-top:20px;"></review-search>
     <hr>
     <br>
-    <font style="font-weight:bold; font-size:30px;">리뷰 목록</font><br>
-    <h4>등록된 리뷰 수 : {{ reviewCnt }}개</h4><br>
+    <font style="font-weight:bold; font-size:30px;">REVIEW LIST</font><br>
+    <h4>REGISTERED : {{ reviewCnt }}</h4><br>
     <div v-if="reviewCnt">
       <table class="table text-center">
         <colgroup>
@@ -36,9 +36,9 @@
             <td>{{ review.content }}</td>
             <td>
               <router-link class="review-link" :to="`/review/${review.id}`" v-if="loginUser.id === 'admin'">
-                <button class="btn" style="width:90px; background-color:gold;">수정하기</button>
+                <button class="btn" style="width:90px; background-color:gold;">EDIT</button>
               </router-link>
-              <button class="btn" style="width:90px; background-color:silver;" v-else-if="loginUser.id != 'admin'">수정하기</button>
+              <button class="btn" style="width:90px; background-color:silver;" v-else-if="loginUser.id != 'admin'">EDIT</button>
             </td>
           </tr>
         </tbody>

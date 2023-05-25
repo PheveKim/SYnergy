@@ -74,7 +74,7 @@ export default new Vuex.Store({
     LOGOUT: function (state) {
       state.loginUser = null;
       sessionStorage.removeItem("accessToken");
-      alert("로그아웃 되었습니다.");
+      alert("Logged out Successfully");
       router.push("/");
     },
     SET_RANDOM_USER: function (state, user) {
@@ -129,13 +129,13 @@ export default new Vuex.Store({
         method:"POST",
         data:user,
       }).then((res)=>{
-        alert("로그인 성공!");
+        alert("Login complete");
         sessionStorage.setItem("accessToken",res.data.accessToken);
         commit("SET_LOGIN_USER",res.data.accessToken);
         router.push("/");
         
       }).catch((err)=>{
-        alert("로그인 실패");
+        alert("Login failed");
         console.log(err);
       });
     },
@@ -150,7 +150,7 @@ export default new Vuex.Store({
       })
         .then(() => {
           commit("CREATE_USER", user);
-          alert("등록되었습니다.");
+          alert("Registered complete");
           router.push("/login");
         })
         .catch((err) => {
@@ -182,7 +182,7 @@ export default new Vuex.Store({
         data: user,
       })
         .then((res) => { 
-          alert("수정 완료!");
+          alert("Edit complete");
           sessionStorage.setItem("accessToken",res.data.accessToken);
           router.go(0);
         })
@@ -198,7 +198,7 @@ export default new Vuex.Store({
         
       })
         .then(() => {
-          alert("삭제 완료!");
+          alert("Delete complete");
           let index;
           for (let i = 0; i < state.users.length; i++) {
             if (state.users[i].id === id) {
@@ -313,7 +313,7 @@ export default new Vuex.Store({
       })
         .then(() => {
           commit("CREATE_VIDEO", video);
-          alert("등록되었습니다.");
+          alert("Registered complete");
           router.push("/video");
         })
         .catch((err) => {
@@ -345,7 +345,7 @@ export default new Vuex.Store({
         data: video,
       })
         .then(() => {
-          alert("수정 완료!");
+          alert("Edit complete");
           router.push("/video");
         })
         .catch((err) => {
@@ -364,7 +364,7 @@ export default new Vuex.Store({
         data: video,
       })
         .then(() => {
-          alert("좋아요!");
+          alert("Like complete");
           router.go(0);
           
         })
@@ -382,7 +382,7 @@ export default new Vuex.Store({
         method: "DELETE",
       })
         .then(() => {
-          alert("삭제 완료!");
+          alert("Delete complete");
           let index;
           for (let i = 0; i < state.videos.length; i++) {
             if (state.videos[i].id === id) {
@@ -440,18 +440,19 @@ export default new Vuex.Store({
           console.log(response.status);
 
           if(response.status === 201){
-            alert("등록되었습니다!");
+            alert("Registered complete");
             commit("CREATE_REVIEW", review);
           }
           else{
-            alert("욕설이 포함되어있습니다! 다시 작성해주세요.");
+            alert("Please do not abuse others");
           }
           
-          router.push('/video');
+          router.go(router.currentRoute);
+          // router.push('/video');
           // router.push(`/video/${review.videoid}`);
         })
         .catch((err) => {
-          alert("에러발생!");
+          alert("Error");
           console.log(err);
         });
     },
@@ -479,7 +480,7 @@ export default new Vuex.Store({
         data: review,
       })
         .then(() => {
-          alert("수정 완료!");
+          alert("Edit complete");
           router.push("/review");
         })
         .catch((err) => {
@@ -493,7 +494,7 @@ export default new Vuex.Store({
         method: "DELETE",
       })
         .then(() => {
-          alert("삭제 완료!");
+          alert("Delete complete");
           let index;
           for (let i = 0; i < state.reviews.length; i++) {
             if (state.reviews[i].id === id) {
@@ -547,7 +548,7 @@ export default new Vuex.Store({
         .then((res) => {
           console.log(res.data);
           commit("SEARCH_ROUTINE", res.data);
-          alert("운동루틴 계산 완료되었습니다!")
+          alert("Planning complete")
           router.push("/recommend")
         })
         .catch((err) => {
@@ -564,7 +565,7 @@ export default new Vuex.Store({
         .then((res) => {
           console.log(res.data);
           commit("SEARCH_FOOD", res.data);
-          alert("식단 계산 완료되었습니다!")
+          alert("Planning complete")
           router.push("/recommend")
         })
         .catch((err) => {

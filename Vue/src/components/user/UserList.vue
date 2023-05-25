@@ -1,11 +1,11 @@
 <template>
-  <div class="container" style="margin-top:20px;">
-    <font style="font-weight:bold; font-size:30px;">회원 검색</font><br>
+  <div class="container" style="margin-top:20px; font-family: 'Cyber';">
+    <font style="font-weight:bold; font-size:30px; font-family: 'Cyber';">SEARCH USERS</font><br>
     <user-search style="margin-top:20px;"></user-search>
     <hr>
     <br>
-    <font style="font-weight:bold; font-size:30px;">회원 목록</font>
-    <h4>등록된 회원 수 : {{ userCnt }}명</h4><br>
+    <font style="font-weight:bold; font-size:30px; font-family: 'Cyber';">USER LIST</font>
+    <h4 style="font-family: 'Cyber';">REGISTERED : {{ userCnt }}</h4><br>
     <div v-if="userCnt">
       <div v-if="loginUser.id == 'admin'">
         <table class="table text-center">
@@ -42,8 +42,8 @@
               <td>
                 <!-- <button class="btn btn-sm" :id=user.id @click="deleteUser" style="background-color:gold; width:80px;" v-if="user.id != 'admin'">회원탈퇴</button> -->
                 <!-- <button :id=user.id data-toggle="modal" data-target="#RemoveCheckModal" class="btn btn-sm" style="background-color:gold; width:80px;" v-if="user.id != 'admin'">회원탈퇴</button> -->
-                <button :data-id=user.id data-toggle="modal" data-target="#RemoveCheckModal" class="delUser btn btn-sm" style="background-color:gold; width:80px;" v-if="user.id != 'admin'">회원탈퇴</button>
-                <button class="btn btn-sm" style="background-color:silver; width:80px;" v-if="user.id === 'admin'">회원탈퇴</button>
+                <button :data-id=user.id data-toggle="modal" data-target="#RemoveCheckModal" class="delUser btn btn-sm" style="background-color:gold; width:80px;" v-if="user.id != 'admin'">DELETE</button>
+                <button class="btn btn-sm" style="background-color:silver; width:80px;" v-if="user.id === 'admin'">DELETE</button>
               </td>
             </tr>
           </tbody>
@@ -79,7 +79,7 @@
         </table> 
       </div>
     </div>
-    <div v-else>등록된 회원이 없습니다.</div>
+    <div v-else>No users</div>
     <br>
     <br>
     <!-- Modal -->
@@ -87,7 +87,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="RemoveCheckModalLabel"><font style="font-weight:bold;">주의!</font></h5>
+            <h5 class="modal-title" id="RemoveCheckModalLabel"><font style="font-weight:bold;">CAUTION</font></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -95,10 +95,10 @@
           <div class="modal-body text-center">
             <input readonly id="deleteTargetId" value="" class="text-center" style="width:130px;">
             <br><br>
-            <font style="font-size:17px;">회원 탈퇴를 계속 진행하시겠습니까?</font>
+            <font style="font-size:17px;">DELETE USER?</font>
           </div>
           <div class="text-center" style="margin-bottom:10px;">
-            <button type="button" class="btn btn-lg" style="background-color:greenyellow; font-weight:bold; width:100px;" data-dismiss="modal" @click="deleteUser">확인</button>
+            <button type="button" class="btn btn-lg btn-primary" style="font-weight:bold; width:100px;" data-dismiss="modal" @click="deleteUser">DELETE</button>
           </div>
         </div>
       </div>
