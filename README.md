@@ -3,10 +3,7 @@
 ## 목차
 [1.서비스 소개](#서비스-소개)
 
-
-[2.코딩을 잘하고 싶어요](#coding을-잘하고-싶어요)
  
-
 ## 서비스 소개
 
 ![SYnergy-page-001](https://github.com/JustYarnSir17/Fitness_pjt/assets/122420033/57fae11a-e4ce-4f6d-ba01-dc6e1135528a)
