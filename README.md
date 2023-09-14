@@ -1,9 +1,18 @@
 # SYnergy
 
 ## 목차
-[1.서비스 소개](#서비스-소개)
+[1. 서비스 소개](#서비스-소개)
 
+
+[2. 기획 배경](#기획-배경)
+
+[3. 기능 소개](#기능-소개)
+
+[4. 기술 스택](#기술-스택)
+
+[5. 프로젝트 PPT](#프로젝트-PPT)
  
+
 ## 서비스 소개
 
 ![SYnergy-page-001](https://github.com/JustYarnSir17/Fitness_pjt/assets/122420033/57fae11a-e4ce-4f6d-ba01-dc6e1135528a)
@@ -25,6 +34,18 @@
 * 자신의 개인적인 운동 정보를 토대로 구글 BARD AI를 통해 새로운 정보를 추출할 수 있다.
 ## 기능 소개
 ![SYnergy_gif](https://github.com/JustYarnSir17/Fitness_pjt/assets/122420033/825d7e3e-7674-4c2e-99a2-577b0f449c33)
+
+
+## 기술 스택
+<img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white">
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white">
+<img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+
 
 ## 프로젝트 PPT
 ![SYnergy-page-001](https://github.com/JustYarnSir17/Fitness_pjt/assets/122420033/57fae11a-e4ce-4f6d-ba01-dc6e1135528a)
