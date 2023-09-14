@@ -3,7 +3,6 @@
 ## 목차
 [1. 서비스 소개](#서비스-소개)
 
-
 [2. 기획 배경](#기획-배경)
 
 [3. 기능 소개](#기능-소개)
@@ -17,11 +16,12 @@
 
 ![SYnergy-page-001](https://github.com/JustYarnSir17/Fitness_pjt/assets/122420033/57fae11a-e4ce-4f6d-ba01-dc6e1135528a)
 
-
 ## 서비스 설명
 ### 개요
 * 구글 BARD AI를 이용한 헬스 케어 웹 서비스
-* 서비스 명: SYnergy
+* 다양한 운동 부위에 따른 운동 패턴과 운동 영상 추천
+* 개인의 1RM 기반 식단 추천과 운동 추천
+
 ### 타켓
 * 운동에 관심이 있는 사람들
 * 자신의 운동 능력을 계산하고 싶은 사람들
@@ -37,14 +37,13 @@
 
 
 ## 기술 스택
-<img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white">
-<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
-<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
-<img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-<img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white">
-<img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
-<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+|분야|사용 기술 스택|
+|:---|:---|
+|Backend|Spring Boot, MyBatis, JWT, Spring Security|
+|Frontend|Vue.js, BootStrap|
+|DB|MySQL|
+|API|Google Bard|
+|기타|Git, Notion, MatterMost, Figma|
 
 
 ## 프로젝트 PPT
