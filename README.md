@@ -1,4 +1,6 @@
-![image](https://github.com/PheveKim/SYnergy/assets/61591883/7284b30f-c6d9-46c2-ac24-5ee5fc438479) # SYnergy
+![image](https://github.com/PheveKim/SYnergy/assets/61591883/a8de6128-1163-44ae-904e-3a3edc96378a)
+
+# SYnergy
 
 ## 목차
 [1. 서비스 소개](#서비스-소개)
