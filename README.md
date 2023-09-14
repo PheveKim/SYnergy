@@ -1,4 +1,4 @@
-![image](https://github.com/PheveKim/SYnergy/assets/61591883/c6af58f0-10d2-4b96-8e59-30f0f1cf8696)
+![image](https://github.com/PheveKim/SYnergy/assets/61591883/6d1e69b0-528a-4b4b-b1cf-631d34810b5a)
 
 # SYnergy
 
