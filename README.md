@@ -5,9 +5,9 @@
 
 [2. 기획 배경](#기획-배경)
 
-[3. 기능 소개](#기능-소개)
+[3. 기술 스택](#기술-스택)
 
-[4. 기술 스택](#기술-스택)
+[4. 기능 소개](#기능-소개)
 
 [5. 프로젝트 PPT](#프로젝트-PPT)
 
@@ -29,10 +29,6 @@
 * 다양한 운동 정보를 한 곳에서 확인할 수 있기에 편리함을 제공할 수 있다.
 * 자신의 개인적인 운동 정보를 토대로 구글 BARD AI를 통해 새로운 정보를 추출할 수 있다.
 
-## 기능 소개
-![SYnergy_gif](https://github.com/JustYarnSir17/Fitness_pjt/assets/122420033/825d7e3e-7674-4c2e-99a2-577b0f449c33)
-
-
 ## 기술 스택
 |분야|사용 기술 스택|
 |:---|:---|
@@ -41,6 +37,9 @@
 |DB|MySQL|
 |API|Google Bard|
 |기타|Git, Notion, MatterMost, Figma|
+
+## 기능 소개
+![SYnergy_gif](https://github.com/JustYarnSir17/Fitness_pjt/assets/122420033/825d7e3e-7674-4c2e-99a2-577b0f449c33)
 
 
 ## 프로젝트 PPT
